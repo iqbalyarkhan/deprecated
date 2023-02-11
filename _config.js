@@ -14,7 +14,7 @@ module.exports = {
     // If the file does not exist, it is replaced by a random image.
 
   /** Home > Bio information*/
-  comment: 'full stack engineer 🧑🏽‍💻',
+  comment: '🧑🏽‍💻',
   name: 'User Name',
   company: '',
   location: 'USA',
