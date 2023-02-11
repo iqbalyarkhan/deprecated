@@ -91,23 +91,6 @@ const Header = (props: headerPropsType) => {
     <header id="Header" className={`${isHide ? 'hide' : 'show'} ${isMobile ? 'mobile' : ''}`}>
       <div className="header-title">
         <Link to="/">
-          <div className="header-profile-image-wrap">
-            <img
-              src={
-                config.profileImageFileName
-                  ? require(`../../images/${config.profileImageFileName}`)
-                  : 'https://source.unsplash.com/random/100x100'
-              }
-              alt="title profile picture"
-              style={{
-                width: imageSize,
-                height: imageSize,
-              }}
-            />
-          </div>
-        </Link>
-
-        <Link to="/">
           <h1 className="header-title-text">{siteTitle}</h1>
         </Link>
       </div>

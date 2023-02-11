@@ -1,6 +1,6 @@
 module.exports = {
   /** Site MetaData (Required all)*/
-  title: `Title`,                           // (* Required)
+  title: ``,                           // (* Required)
   description: `Blog Description`,          // (* Required)
   author: `Author`,                         // (* Required)
   language: 'en-US',                        // (* Required) html lang, ex. 'en' | 'en-US' | 'ko' | 'ko-KR' | ...
@@ -14,12 +14,12 @@ module.exports = {
     // If the file does not exist, it is replaced by a random image.
 
   /** Home > Bio information*/
-  comment: 'Enter your information in the "./config.js" file. ',
+  comment: 'full stack engineer 🧑🏽‍💻',
   name: 'User Name',
   company: '',
-  location: 'Korea',
+  location: 'USA',
   email: '',
-  website: 'https://github.com/iqbalyarkhan/iqbalyarkhan.github.io',           // ex.'https://junhobaik.github.io'
+  website: 'https://iqbalyarkhan.github.io',           // ex.'https://junhobaik.github.io'
   linkedin: '',                                                          // ex.'https://www.linkedin.com/in/junho-baik-16073a19ab'
   facebook: '',                                                          // ex.'https://www.facebook.com/zuck' or 'https://www.facebook.com/profile.php?id=000000000000000'
   instagram: '',                                                         // ex.'https://www.instagram.com/junhobaik'
