@@ -15,7 +15,7 @@ module.exports = {
 
   /** Home > Bio information*/
   comment: '🧑🏽‍💻',
-  name: 'User Name',
+  name: 'Iqbal Khan',
   company: '',
   location: 'USA',
   email: '',
