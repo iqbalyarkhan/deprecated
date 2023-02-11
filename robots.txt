@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://iqbalyarkhan.github.io/sitemap.xml
+Host: https://iqbalyarkhan.github.io
