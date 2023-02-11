@@ -49,7 +49,7 @@
   right: 0;
   overflow: auto;
   margin-top: $header-height;
-  opacity: 0.4;
+  opacity: 0.6;
   max-height: 85%;
 
   @media screen and (max-width: $break-toc) {
@@ -57,7 +57,7 @@
   }
 
   &:hover {
-    opacity: 0.9;
+    opacity: 1.0;
   }
 }
 
