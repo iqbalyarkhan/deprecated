@@ -1,7 +1,7 @@
 module.exports = {
   /** Site MetaData (Required all)*/
-  title: ``,                           // (* Required)
-  description: `Blog Description`,          // (* Required)
+  title: `Full.Stack`,                           // (* Required)
+  description: `A place to document my learnings`,          // (* Required)
   author: `Author`,                         // (* Required)
   language: 'en-US',                        // (* Required) html lang, ex. 'en' | 'en-US' | 'ko' | 'ko-KR' | ...
   siteUrl: 'https://iqbalyarkhan.github.io',                      // (* Required)
