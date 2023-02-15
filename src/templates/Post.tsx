@@ -318,35 +318,6 @@ const Post = (props: postProps) => {
               </ul>
             </div>
           ) : null}
-
-          {isDevelopment ? (
-            <>
-              <aside className="ad ad-dev">
-                <span>Ads</span>
-                <span>displayed when you deploy</span>
-              </aside>
-              {isDisqus ? (
-                <div className="comments comments-dev">
-                  <span>Comments</span>
-                  <span>displayed when you deploy</span>
-                </div>
-              ) : null}
-            </>
-          ) : (
-            <>
-              <aside className="ad">
-                <AdSense.Google
-                  client={config.googleAdsenseClient || 'ca-pub-5001380215831339'}
-                  slot={config.googleAdsenseSlot || '5214956675'}
-                  style={{ display: 'block' }}
-                  format="auto"
-                  responsive="true"
-                />
-              </aside>
-
-              {!isSSR ? <Suspense fallback={<></>}>{commentEl}</Suspense> : null}
-            </>
-          )}
         </div>
 
         {!isTableOfContents ? null : <Toc isOutside={true} toc={tableOfContents} />}
