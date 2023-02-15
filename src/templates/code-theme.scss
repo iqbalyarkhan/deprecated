@@ -183,11 +183,10 @@
  * GHColors theme by Avi Aryan (http://aviaryan.in)
  * Inspired by Github syntax coloring
  */
-
     code[class*='language-'],
     pre[class*='language-'] {
       color: #393a34;
-      font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+      font-family: 'Monaco';
       direction: ltr;
       text-align: left;
       white-space: pre;

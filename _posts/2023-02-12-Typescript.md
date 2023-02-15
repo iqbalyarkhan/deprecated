@@ -21,7 +21,7 @@ This typechecking is the magic behind TypeScript. It’s how TypeScript makes su
 
 To explicitly signal to TypeScript what your types are, use annotations. Annotations take the form value: type and tell the typechecker, “Hey! You see this value here? Its type is type.” Let’s look at a few examples (the comments following each line are the actual types inferred by TypeScript):
 
-```ts
+```tsx
 let a: number = 1; // a is a number
 let b: string = 'hello'; // b is a string
 let c: boolean[] = [true, false]; // c is an array of booleans
@@ -29,7 +29,7 @@ let c: boolean[] = [true, false]; // c is an array of booleans
 
 And if you want TypeScript to infer your types for you, just leave them off and let TypeScript get to work:
 
-```ts
+```tsx
 let a = 1; // a is a number
 let b = 'hello'; // b is a string
 let c = [true, false]; // c is an array of booleans
@@ -73,7 +73,7 @@ The following command will generate a tslint.json file with a default TSLint con
 
 You can then add overrides to this to conform with your own coding style. For example, my tslint.json looks like this:
 
-```ts
+```tsx
 {
   "defaultSeverity": "error",
   "extends": [
@@ -90,7 +90,7 @@ You can then add overrides to this to conform with your own coding style. For ex
 
 Let's look at our first react component:
 
-```ts
+```tsx
 import React from 'react';
 function App() {
   //Do something
@@ -110,7 +110,7 @@ Second, the App component doesn’t receive any parameters in its function signa
 
 Variables defined in the function’s body will be re-defined each time this function runs, like all JavaScript functions:
 
-```ts
+```tsx
 import React from 'react';
 function App() {
   const title = 'React';
@@ -127,7 +127,7 @@ The `title` variable can also be define outside the function. Running the above 
 
 Let's look at some more elements. An input field with a label can be defined as follows:
 
-```ts
+```tsx
 import React from 'react';
 const title = 'React';
 function App() {
@@ -146,7 +146,7 @@ We specified three HTML attributes here: htmlFor, id, and type. Where id and typ
 
 Let's modify our greeting a little:
 
-```ts
+```tsx
 import React from 'react';
 
 const welcome = {
@@ -170,7 +170,7 @@ export default App;
 
 We can also call functions from within the curly braces:
 
-```ts
+```tsx
 import React from 'react';
 
 function getGreeting() {
@@ -193,7 +193,7 @@ export default App;
 
 So far we’ve rendered a few primitive variables in JSX; next we’ll render a list of items. We’ll experiment with sample data at first, then we’ll apply that to fetch data from a remote API. First, let’s define the array as a variable. As before, we can define a variable outside or inside the component. The following defines it outside:
 
-```ts
+```tsx
 
 const list = [
   {
@@ -219,7 +219,7 @@ export default App;
 
 Each item in the list has a title, a url, an author, an identifier (objectID), points – which indicate the popularity of an item – and a count of comments. Next, we’ll render the list within our JSX dynamically:
 
-```ts
+```tsx
 function App() {
   return (
     <div>
@@ -235,7 +235,7 @@ function App() {
 
 By assigning a key attribute to each list item’s element, React can identify modified items if the list changes (e.g. re-ordering). Fortunately, our list items come with an identifier:
 
-```ts
+```tsx
 function App() {
   return (
     <div>
@@ -252,7 +252,7 @@ function App() {
 
 Note that we're using `item.ObjectID` as the `key` in our list. We avoid using the index of the item in the array to make sure the key attribute is a stable identifier. If the list changes its order, for example, React will not be able to identify the items properly. Here's what our code looks like right now:
 
-```ts
+```tsx
 import React from 'react';
 
 const list = [
@@ -296,7 +296,7 @@ export default App;
 
 We can display multiple fields from our list instead of just the title like so:
 
-```ts
+```tsx
 function App() {
   return (
     <div>
@@ -321,7 +321,7 @@ function App() {
 
 The component above is getting too complicated, let's create a new list component on its own. To do so, I'll export the list to its own file called `list.ts`. This is what our App component looks like:
 
-```ts
+```tsx
 import { List } from './List';
 
 function getGreeting() {
@@ -344,7 +344,7 @@ export default App;
 
 Notice we're importing `List` from a separate file:
 
-```ts
+```tsx
 const list = [
   {
     title: 'React',
@@ -383,3 +383,71 @@ export function List() {
 ```
 
 With this example, we can see how components that encapsulate meaningful tasks can work for larger React applications.Larger React applications have component hierarchies (also called component trees). There is usually one uppermost entry point component (e.g. App) that spans a tree of components below it. The App is the parent component of the List, so the List is a child component of the App. In a component tree, the App is the root component, and the components that don’t render any other components are called leaf components (e.g. List). The App can have multiple children, as can the List. If the App has another child component, the additional child component is called a sibling component of the List.
+
+## index.js
+
+We've been ignoring one important file in our project: `index.js`:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+There is imported library called `react-dom`, in which a ReactDOM.render() function uses an HTML node to replace it with JSX. The process integrates React into HTML. ReactDOM.render() expects two arguments; the first is to render the JSX. It creates an instance of your App component, though it can also pass simple JSX without any component instantiation.
+
+The second argument specifies where the React application enters your HTML. It expects an element with an id='root', found in the public/index.html file. This is a basic HTML file.
+
+## onChange() handlers
+
+The App component still has the input field and label, which we haven’t used. In HTML outside of JSX, input fields have an onchange handler. This is what our App component looks like right now:
+
+```tsx
+import { List } from './List';
+
+function getGreeting() {
+  return 'hey React!';
+}
+
+function App() {
+  return (
+    <div>
+      <h1>{getGreeting()}</h1>
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" />
+      <hr />
+      <List />
+    </div>
+  );
+}
+export default App;
+```
+
+Let's define a handler function for the change event of the input field. This function can be passed to the `onChange` attribute (JSX named attribute) of the input field:
+
+```tsx
+import { List } from './List';
+
+function getGreeting() {
+  return 'hey React!';
+}
+
+function App() {
+  //Handler function:
+  const handleChange = (event: any) => {
+    console.log(event);
+  };
+
+  return (
+    <div>
+      <h1>{getGreeting()}</h1>
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" onChange={handleChange} />
+      <hr />
+      <List />
+    </div>
+  );
+}
+export default App;
+```
