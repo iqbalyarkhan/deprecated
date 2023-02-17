@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 15 Feb 2023 19:34:57 GMT</lastBuildDate><item><title><![CDATA[IAM]]></title><description><![CDATA[Intro When you sign up for AWS using your email and password, you're assigned a user called the  user. This user has unrestricted access to…]]></description><link>https://iqbalyarkhan.github.io/IAM/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/IAM/</guid><pubDate>Wed, 15 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 17 Feb 2023 05:22:30 GMT</lastBuildDate><item><title><![CDATA[Encryption]]></title><description><![CDATA[Intro Encryption is the method by which information is converted into secret code that hides the information's true meaning. The science of…]]></description><link>https://iqbalyarkhan.github.io/Encryption/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Encryption/</guid><pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Encryption is the method by which information is converted into secret code that hides the information&apos;s true meaning. The science of encrypting and decrypting information is called cryptography.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unencrypted&lt;/strong&gt; data is &lt;strong&gt;plaintext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Encrypted&lt;/strong&gt; data is &lt;strong&gt;ciphertext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Encryption key&lt;/strong&gt; is similar to a password that is used to generate ciphertext&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Algorithm&lt;/strong&gt; takes plaintext and an encryption key to create ciphertext. There are many algorithms that do this: AES, Blowfish, RC4 etc&lt;/p&gt;
+&lt;p&gt;The formulas used to encode and decode messages are called encryption algorithms, or ciphers. Process of encryption takes plaintext and a key and uses an algorithm to generate ciphertext. Decryption is the process of taking ciphertext and key to create plaintext.&lt;/p&gt;
+&lt;h2 id=&quot;encryption-at-rest&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#encryption-at-rest&quot; aria-label=&quot;encryption at rest permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Encryption at rest&lt;/h2&gt;
+&lt;p&gt;Encryption at rest is a type of encryption designed to prevent theft of sensitive data. This type of encryption is usually applied on hard-drives, cloud environment hardware etc. A &quot;secret&quot; is used to encrypt and decrypt the data. The secret is not to be shared with others. Only those that have knowledge of the secret would be able to decrypt the data&lt;/p&gt;
+&lt;p&gt;Usually with this type of encryption, only a single party is involved that is responsible for encryption and decryption of the data.&lt;/p&gt;
+&lt;h2 id=&quot;encryption-in-transit&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#encryption-in-transit&quot; aria-label=&quot;encryption in transit permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Encryption in transit&lt;/h2&gt;
+&lt;p&gt;In this type of encryption, data is encrypted as it is transferred between two parties. Party A (you) encrypt the data and send it to party B (your bank). Party B decrypts the data, performs some action, encrypts new data and returns this new data back to party A.&lt;/p&gt;
+&lt;p&gt;This type of encryption involves multiple systems or users.&lt;/p&gt;
+&lt;h2 id=&quot;symmetric-key-encryption&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#symmetric-key-encryption&quot; aria-label=&quot;symmetric key encryption permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Symmetric key encryption&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2fda80a3c71e3d19f47f449c63c44719/2b460/symmetric.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHeqQMFB//EABgQAQEBAQEAAAAAAAAAAAAAAAEAERBB/9oACAEBAAEFArDgDYN7/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGRABAAMBAQAAAAAAAAAAAAAAAQARITFB/9oACAEBAAE/IXc8gHKuWTQQWDGy6Y9T/9oADAMBAAIAAwAAABBQD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQEBAQEBAAAAAAAAAAAAAAERADEhUf/aAAgBAQABPxCPaK7kKGHyTS6g/LjJwoKaB/BTmcDyD83/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;symmetric&quot;
+        title=&quot;symmetric&quot;
+        src=&quot;/static/2fda80a3c71e3d19f47f449c63c44719/1c72d/symmetric.jpg&quot;
+        srcset=&quot;/static/2fda80a3c71e3d19f47f449c63c44719/a80bd/symmetric.jpg 148w,
+/static/2fda80a3c71e3d19f47f449c63c44719/1c91a/symmetric.jpg 295w,
+/static/2fda80a3c71e3d19f47f449c63c44719/1c72d/symmetric.jpg 590w,
+/static/2fda80a3c71e3d19f47f449c63c44719/a8a14/symmetric.jpg 885w,
+/static/2fda80a3c71e3d19f47f449c63c44719/fbd2c/symmetric.jpg 1180w,
+/static/2fda80a3c71e3d19f47f449c63c44719/2b460/symmetric.jpg 1534w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Say you have sender and receiver who want to exchange ciphertext with each other. They do the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Agree on an algorithm (AES-256 for example)&lt;/li&gt;
+&lt;li&gt;The sender takes plaintext and a symmetric encryption key and feeds it to AES-256 algorithm&lt;/li&gt;
+&lt;li&gt;Algorithm outputs ciphertext&lt;/li&gt;
+&lt;li&gt;Ciphertext is then transferred over to receiver&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The receiver needs to have the same key that was used to encrypt the data!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How do we transfer the key that was used to encrypt the data?! This is why symmetric encryption is not ideal for encryption in transit. It is better suited for encrypting local data (hard drives, cloud servers etc). But just to complete the example above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Receiver decrypts the ciphertext using the encryption key that was used&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;asymmetric-key-encryption&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#asymmetric-key-encryption&quot; aria-label=&quot;asymmetric key encryption permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Asymmetric key encryption&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e15506abf56e1e9bb423969f333fcd2c/a9a89/asymmetric.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 88.51351351351352%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBACdASoUABIAPtFgqU+oJSOiKAgBABoJaQAALnVMaZn3NJMt7/F2AAAA/vYSjQZY3S1b1IA1DfIF+8fmqRW7Iqgeyp1aq1v9EFPVW6XMR5rWpiUMhq2Ey2QzIGSGpgWi7qr8b5TEBuyAAAA=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;asymmetric&quot;
+        title=&quot;asymmetric&quot;
+        src=&quot;/static/e15506abf56e1e9bb423969f333fcd2c/5ca24/asymmetric.webp&quot;
+        srcset=&quot;/static/e15506abf56e1e9bb423969f333fcd2c/cbe2e/asymmetric.webp 148w,
+/static/e15506abf56e1e9bb423969f333fcd2c/3084c/asymmetric.webp 295w,
+/static/e15506abf56e1e9bb423969f333fcd2c/5ca24/asymmetric.webp 590w,
+/static/e15506abf56e1e9bb423969f333fcd2c/dad35/asymmetric.webp 885w,
+/static/e15506abf56e1e9bb423969f333fcd2c/a9a89/asymmetric.webp 1024w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Say you have sender and receiver who want to exchange ciphertext with each other. They do the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Agree on an algorithm (public-key encryption or digital signatures for example)&lt;/li&gt;
+&lt;li&gt;The sender takes plaintext and creates asymmetric keys (notice plural!) for that algorithm. Asymmetric encryption uses 2 keys: a public key and a private key.&lt;/li&gt;
+&lt;li&gt;The public key is used to generate the ciphertext and this ciphertext is only decryptable by the private key! Public key cannot decrypt data that it was used to encrypt. The public key is made publicly available&lt;/li&gt;
+&lt;li&gt;The sender downloads the public key made available by the receiver. The sender then uses the public key to create ciphertext and transmit it to the receiver&lt;/li&gt;
+&lt;li&gt;The receiver already has the private key. Receiver provides the private key and cipher text to the algorithm and is able to read plaintext data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Notice in the flow above, no sensitive key exchange is required! Public key can be used by anyone to create ciphertext and send it to the receiver. But the receiver is the only person who has the private key and is able to decrypt the data.&lt;/p&gt;
+&lt;p&gt;This type of encryption is used when two or more parties are involved. This used by SSL or TLS encryption (browser communication) and SSH for example.&lt;/p&gt;
+&lt;p&gt;Asymmetric encryption is computationally expensive so usually asymmetric encryption is used to exchange symmetric keys and then use symmetric encryption for further communication!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[IAM]]></title><description><![CDATA[Intro When you sign up for AWS using your email and password, you're assigned a user called the  user. This user has unrestricted access to…]]></description><link>https://iqbalyarkhan.github.io/IAM/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/IAM/</guid><pubDate>Wed, 15 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
 &lt;p&gt;When you sign up for AWS using your email and password, you&apos;re assigned a user called the &lt;code class=&quot;language-text&quot;&gt;root&lt;/code&gt; user. This user has unrestricted access to all resources in that account. If this account gets hacked, this account will be at the mercy of the hacker. The root user cannot be restricted. We want to be able to provide access to others that isn&apos;t without restrictions: for example, the BI department might need access to AWS QuickSight but not to AWS S3. This process of providing only required access is called Least Privileged Access. This is where IAM comes handy!&lt;/p&gt;
 &lt;h2 id=&quot;iam&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#iam&quot; aria-label=&quot;iam permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;a href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;IAM&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;IAM:&lt;/p&gt;
