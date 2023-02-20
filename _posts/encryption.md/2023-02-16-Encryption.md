@@ -65,3 +65,13 @@ Notice in the flow above, no sensitive key exchange is required! Public key can 
 This type of encryption is used when two or more parties are involved. This used by SSL or TLS encryption (browser communication) and SSH for example.
 
 Asymmetric encryption is computationally expensive so usually asymmetric encryption is used to exchange symmetric keys and then use symmetric encryption for further communication!
+
+## Signing
+
+Say the receiver has received the message and wants to respond with that confirmation via asymmetric encryption.One option is that the receiver can send an OK message. However, in asymmetric encryption, anyone can get sender's public key and use that to respond with an OK. Receiver can't be sure that the OK was from the intended receiver. This is where signing comes in.
+
+With signing, the receiver can use their private key and sign that message. The receiver gets the message and it can then use the sender's public key to prove whether that message was signed by the intended receiver.
+
+![signing](signing.png)[Credit: learn.cantrill.io]
+
+Key signing is used for ID verification.
