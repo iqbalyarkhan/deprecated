@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Feb 2023 05:20:06 GMT</lastBuildDate><item><title><![CDATA[Networking Foundations]]></title><description><![CDATA[Intro We'll look at a few different "types" of networks present. There's local networking that deals with how data moves between devices on…]]></description><link>https://iqbalyarkhan.github.io/Networking/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Networking/</guid><pubDate>Sun, 19 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Feb 2023 04:22:04 GMT</lastBuildDate><item><title><![CDATA[Networking Foundations]]></title><description><![CDATA[Intro We'll look at a few different "types" of networks present. There's local networking that deals with how data moves between devices on…]]></description><link>https://iqbalyarkhan.github.io/Networking/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Networking/</guid><pubDate>Sun, 19 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
 &lt;p&gt;We&apos;ll look at a few different &quot;types&quot; of networks present.&lt;/p&gt;
 &lt;p&gt;There&apos;s local networking that deals with how data moves between devices on your local network.&lt;/p&gt;
 &lt;p&gt;There&apos;s routing: how data moves from your network to another network (AWS, Netflix etc)&lt;/p&gt;
@@ -35,7 +35,236 @@
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Each &quot;device&quot; capable of communicating with networks (ie connected to the internet!) will have a networking stack. Layers 1, 2 and 3 are called the media layers and the remaining are called host layers. Media layer is responsible for helping data move from point A to point B. Hosts layers are responsible for determining how data is chopped up and re-assembled.&lt;/p&gt;
-&lt;p&gt;Conceptually, data is sent from layer 7 of once machine (for example your browser), flows all the way down to layer 1 and back up to layer 7 on another machine (youtube server you&apos;re watching that video from!).&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Encryption]]></title><description><![CDATA[Intro Encryption is the method by which information is converted into secret code that hides the information's true meaning. The science of…]]></description><link>https://iqbalyarkhan.github.io/Encryption/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Encryption/</guid><pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Conceptually, data is sent from layer 7 of once machine (for example your browser), flows all the way down to layer 1 and back up to layer 7 on another machine (youtube server you&apos;re watching that video from!).&lt;/p&gt;
+&lt;h2 id=&quot;layer-1---physical&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#layer-1---physical&quot; aria-label=&quot;layer 1   physical permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layer 1 - Physical&lt;/h2&gt;
+&lt;p&gt;This layer includes the physical equipment involved in the data transfer, such as the cables and switches. This is also the layer where the data gets converted into a bit stream, which is a string of 1s and 0s. You can think of this as a setup where 2 machines are connected via a cable or WIFI that communicate directly with each other.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3619c96861e1891311ea6e506b43a27d/93d1b/layer_1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 31.756756756756754%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsSAAALEgHS3X78AAAAoklEQVQY04VP2Q7DIAzr//8lZQytVKUFiXCmcw9101Rpfgg5bId06x1qrcOOcRyttShvad1tt7U2TZMxBmLE/+KQmifQatvBzCmlGOORI2LkQ6UEI/4V27C+HOdcoMg5E5FSSkrpnCulwCeXqmeeiT+b4YrHe9/3QvZiWZbr51prnI3k6JhheKqHEAJ2KCE8N8M7bCAkRwezrSa6xLiCKH5z3n2BXt5EC01mAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;layer-1&quot;
+        title=&quot;layer-1&quot;
+        src=&quot;/static/3619c96861e1891311ea6e506b43a27d/fcda8/layer_1.png&quot;
+        srcset=&quot;/static/3619c96861e1891311ea6e506b43a27d/12f09/layer_1.png 148w,
+/static/3619c96861e1891311ea6e506b43a27d/e4a3f/layer_1.png 295w,
+/static/3619c96861e1891311ea6e506b43a27d/fcda8/layer_1.png 590w,
+/static/3619c96861e1891311ea6e506b43a27d/efc66/layer_1.png 885w,
+/static/3619c96861e1891311ea6e506b43a27d/c83ae/layer_1.png 1180w,
+/static/3619c96861e1891311ea6e506b43a27d/93d1b/layer_1.png 5667w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;At this layer, the two connected machines agree on a standard where a certain voltage means Binary 1 and another means Binary 0. This allows the two connected machines to transmit data between each other.&lt;/p&gt;
+&lt;h3 id=&quot;hub&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#hub&quot; aria-label=&quot;hub permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Hub&lt;/h3&gt;
+&lt;p&gt;What if we want to add more machines to our system? Not just 2? We can use a layer 1 device called a 4 port hub (to connect 4 machines) to connect 4 machines with each other. The job of a hub is simple: anything received by the hub on any port is transmitted on every other port (including errors and collisions!). See issues here?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All data is processed by all devices (you can&apos;t direct data to a specific port/machine)&lt;/li&gt;
+&lt;li&gt;No way to prevent multiple devices from transmitting at once. So if 2 devices transmit at once, it will cause a collision. Also layer 1 cannot detect when a collision occurs. It lacks any intelligence.&lt;/li&gt;
+&lt;li&gt;No way to control which devices can transmit data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;layer-2---data-link-layer&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#layer-2---data-link-layer&quot; aria-label=&quot;layer 2   data link layer permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layer 2 - Data Link Layer&lt;/h2&gt;
+&lt;p&gt;We saw the limitations of layer 1 (no device to device communication, no collision avoidance, no transmission control) due to which we need layer 2. Layer 2 requires a functioning layer 1. Assume that for our example, layer 1 is running on ethernet.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/93d1b/layer_2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 31.756756756756754%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsSAAALEgHS3X78AAAA20lEQVQY02VOO1IDMQzds3EzzpGSjkNQMJMZCiooQhHCZ7Os13YCrNfyT3KQ15BkhjcqNHo/NYczZJ5clhijlFJrvZuRUvpl/wQVzbmZcq4cImqlVPErIUQ1/8fJbD29yvA5IYcTEV8SlSmhxLE0ORbEL4ulfi5p5sKiuH/2F5fbxc3InHP+G/CxjVe3ow8YQmBVt6frO3jq0tFybM79oJcP3WrdERY6Jty89y+t4g4iHITYfgyrTf/WCikHY8zJzEEOACM4mOrPfANrPNj69mgMgGUW7MSYfzn8ANa6WhKZKxwNAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;layer-2&quot;
+        title=&quot;layer-2&quot;
+        src=&quot;/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/fcda8/layer_2.png&quot;
+        srcset=&quot;/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/12f09/layer_2.png 148w,
+/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/e4a3f/layer_2.png 295w,
+/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/fcda8/layer_2.png 590w,
+/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/efc66/layer_2.png 885w,
+/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/c83ae/layer_2.png 1180w,
+/static/e9fd2bdc5a1c5e9df40fbc9415e786fe/93d1b/layer_2.png 5667w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Layer 2 sends information over a network using a concept called &lt;strong&gt;frames&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Devices also have a unique hardware address called a &lt;strong&gt;MAC address&lt;/strong&gt; for every device on a network. Addresses look like this: &lt;code class=&quot;language-text&quot;&gt;3e:22:fb:b9:5b:75&lt;/code&gt;. MAC address is attached to a specific piece of hardware.&lt;/p&gt;
+&lt;p&gt;A MAC address consists of 2 parts, an OUI (organizationally unique identifier) which distinguishes one company from another. The other part is network interface controller (or NIC). This means MAC + NIC should result in a globally unique MAC address.&lt;/p&gt;
+&lt;p&gt;Keep in mind that layer 1 doesn&apos;t understand frames or mac addresses. All it does is that it receives the data from layer 2, transmits it across to another device listening on layer 1, and then the data is moved on up to layer 2 of the receiver.&lt;/p&gt;
+&lt;h3 id=&quot;frame&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#frame&quot; aria-label=&quot;frame permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Frame&lt;/h3&gt;
+&lt;p&gt;A frame is composed of many parts:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/024d6/frame.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAAsSAAALEgHS3X78AAABI0lEQVQY022KTUvCYACA9xP6RxF06dpPCG9dhC5dC6pLEBkV1mAFbiOdglJ5sDZxZMmats25L9/Nj+n8mJF6Ubb5tns9PDynB4H/4nnQ7kP3Gw7H0HHhcAJXq78XMnL6TVnU6l92C5gAKKrattqqIHV0Q2+IQFcayrtuCBqwBEWt1mWz0wXAkkR5+jNDcqf76M7GTWSTiG4/EAmSSjF4Rj+nmiTFsfFq5TpeWouxW2e8ffDMHtH8hdAlyHLitiTUTOT1PpY+3E0fRzMne4+5bIGhX/BU5ZKo4cliHi3TKPa0fpWNYJyBsjz2Id1xShIvkGhe/FQQPwj8YBXq+YHnhQnm7mTac0aa0Sq+DWRt7oxnvaG3WAS+74fHcjmQZIthZ33nF4Nv9Jf7VGgrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;frame&quot;
+        title=&quot;frame&quot;
+        src=&quot;/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/fcda8/frame.png&quot;
+        srcset=&quot;/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/12f09/frame.png 148w,
+/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/e4a3f/frame.png 295w,
+/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/fcda8/frame.png 590w,
+/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/efc66/frame.png 885w,
+/static/17eff52a2a1c3bdd6d53e92b7fd1eca0/024d6/frame.png 961w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The first part is the preamble and start frame delimiter (SFD). It allows devices to know that this is the start of the frame. Preamble is 56 bits or 7 bytes (8 bits per byte) and SFD is 8 bits or 1 byte. A layer 2 receiver needs to know where the start of a frame is to make sense of the information contained within it.&lt;/p&gt;
+&lt;p&gt;Next is the destination and source mac addresses. If you want to send to all devices on the local network, you put all Fs for destination aka broadcast. The source MAC address allows the sender to receive replies.&lt;/p&gt;
+&lt;p&gt;Next is ether type (or type) that helps determine what layer 3 protocol is putting its data inside the frame. That&apos;s because layer 3 builds on top of layer 2 and uses layer 2 for device to device communication on a local network. When the receiver receives data, it needs to know the layer 3 protocol that put data into that frame.&lt;/p&gt;
+&lt;p&gt;Destination MAC address, source MAC address and type are referred to as MAC header&lt;/p&gt;
+&lt;p&gt;After the header, we have the payload which can range from 46 to 1500 bytes. This contains the data that the frame is sending which is generally provided by layer 3.&lt;/p&gt;
+&lt;p&gt;At the end there&apos;s the frame check sequence that is used to identify any errors in the frame. It allows the destination to check whether any corruption has occurred or not.&lt;/p&gt;
+&lt;h3 id=&quot;layer-2-complete-flow&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#layer-2-complete-flow&quot; aria-label=&quot;layer 2 complete flow permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layer 2 Complete Flow&lt;/h3&gt;
+&lt;p&gt;Let&apos;s checkout a complete flow:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.83783783783784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABoklEQVQoz42R0U9SYRjGz//H9KKZrXXhZlvKSvOiC6egaxOS6q66yGbE2sxZKRSlIGss0FVuQHKOHCBcpky9INS0w+Ec/PWdg1mbc3rx2/O+7/M8380naXoDrWag6f8h9ppusrevUd3dZ3fvQOgvDjRd+OaJrFazbg1+i1mqrKWpbmT5uaEIZJvKusxOeYXvyiLKUoxCOo78JcpmKUW1LHLr8nHW6u2Us1TWMuIdGenByC0Wpkb4FvGgvveQn/VQmPPalKKjrMZ8rM4LYncpRu4cec2clS9Fvcw+HeKxr59seBTpcnsH9wausfi8Dznk5uv0ACtv3KjhYdS3Q+SOcdu7dVdEbnl6EDno4sP4DVw9V+m40kks4EJKfUqQz3xkq5Bku7jQpHAGxX9s5hPk0glSnxP8UJJIhmHSMMDQoW4cYljzOanXD+2eafdM+yMldSbMUugVU2OP6O120uPsptfZ1NOw/OtdXfTf7CPywk8q+Bo1+I5cKIy07J8g/myMJ97btDtaudjSIvirp9HKBYeDzrZLvHx4n6R/nGxgkkxggj9RpACQotkXNgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;recap&quot;
+        title=&quot;recap&quot;
+        src=&quot;/static/2468a8d2e64b2c6541b86fae3b798046/fcda8/recap.png&quot;
+        srcset=&quot;/static/2468a8d2e64b2c6541b86fae3b798046/12f09/recap.png 148w,
+/static/2468a8d2e64b2c6541b86fae3b798046/e4a3f/recap.png 295w,
+/static/2468a8d2e64b2c6541b86fae3b798046/fcda8/recap.png 590w,
+/static/2468a8d2e64b2c6541b86fae3b798046/efc66/recap.png 885w,
+/static/2468a8d2e64b2c6541b86fae3b798046/e548f/recap.png 975w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Say the machine on the left, let&apos;s call it L, needs to send data to machine on the right, R. L knows MAC address of R. L interacts with layer 2 software saying that it needs to send data to R via an ethernet. Data to be transmitted is stored in the payload part of the frame. Layer 2 can communicate with layer 1 the networking stack and it can look for the signs of a &quot;carrier&quot; signal. Layer 2 is looking to &quot;sense&quot; a carrier. A carrier signal means that there&apos;s already data in the signal and we don&apos;t want to corrupt existing data. This is the job of CSMA (carrier sense multiple access). If a carrier isn&apos;t detected, the frame is passed on to layer 1. This comes in handy in the scenario where R layer 2 is also trying to send data while L is transmitting. Detection of carrier signal will prompt R to wait until it gets the all clear.&lt;/p&gt;
+&lt;p&gt;What if there was no carrier detected and both layer 2s transmitted data? Layer 2 contains collision detection. This is the job of collision detection where a jam signal is sent out by all devices that detected a collision. Then a random backoff occurs. This is random as it will allow a device at random to start transmitting again.&lt;/p&gt;
+&lt;p&gt;Layer 1 doesn&apos;t understand what the frame is. It just receives the data from layer 2 and transmits it across. R side receives the data and passes it up to its layer 2. R layer 2 reviews destination mac address of the frame and passes it to R machine.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAACKUlEQVQoz22R208TQRxG9//UxPigQmhK9UGQCFrQ4AUkhqIRAUVJfNEoIlAqii0Xa5EWSrft7lLapbSlFyjQbrfgw3EWm/Diw8n3zfnNTDIZyTAMDstldF1H39HJZDMYRhXLW9Qsag0a7v/8OyOVjyuoiSQB/28igTCxYITjShXz5JSaeYJRq1OtmVQN86ybdeHrJ+eYVp6K/X9EryNVDwvkdZns1iaFlEJRVzjMJzkq6hwVUiTjIbZja8TDfna0MMfFHeH1xlwXa4sUBzmNankPSQ9+4c1AG97X99ievI86/wjV3Ys69wBNoDS6OnfuLFS3mIlMzD/EM97D24GbpIOfkDZ+vOfqxQv0tjXjG3UQnepCnuxCnXGizXaz5e5Bnb5LXHhFpOWVaSeRz53IHzpZeGHnjuMKzZcvIfveIWVScUJrK8Tn3GQ8H8mn11HWvhJbnUMJzhPxz5JW/ezvhtlLBEjHlknLi6S1n+QWPeQW3CS0DeT1AKXsFlJ6N0tC0ajny1SyJbKFAzQtya9AEDkUJr4RoaSmMHcLZIplolEVdTOKLCvk8yWMvX3qVROzIn5aIKWWVgiPTojnDjPW66StyUaH3UG7zU6HrZXbjht0N9twNrVwq/X62azDLlL09mstTDy+x/L4GKHhcRLfvUi5aJzENy/KkpeVmSlGBl28FFg54hriWf8TBvv7edrXx5DIEZersWeQV0PPWfXMoC36xGU+spEofwFFzldN4sSXcQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;recap2&quot;
+        title=&quot;recap2&quot;
+        src=&quot;/static/adfa8bc665b91600205ef9db722d2924/fcda8/recap-2.png&quot;
+        srcset=&quot;/static/adfa8bc665b91600205ef9db722d2924/12f09/recap-2.png 148w,
+/static/adfa8bc665b91600205ef9db722d2924/e4a3f/recap-2.png 295w,
+/static/adfa8bc665b91600205ef9db722d2924/fcda8/recap-2.png 590w,
+/static/adfa8bc665b91600205ef9db722d2924/efc66/recap-2.png 885w,
+/static/adfa8bc665b91600205ef9db722d2924/c83ae/recap-2.png 1180w,
+/static/adfa8bc665b91600205ef9db722d2924/f2331/recap-2.png 1427w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this approach we&apos;ve encapsulated data into frames for transmission!&lt;/p&gt;
+&lt;h3 id=&quot;switch&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#switch&quot; aria-label=&quot;switch permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Switch&lt;/h3&gt;
+&lt;p&gt;Now remember our example from earlier in layer 1 where we had a hub that connected 4 devices? To do the same at layer 2, we use something called a switch! Hub was a layer 1 device and had layer 1 limitations. Switch is a layer 2 device and holds a great advantage over hubs! Let&apos;s say we have a machine at 12 O&apos;clock (A) transmitting to machine at 3 O&apos;Clock (B):&lt;/p&gt;
+&lt;p&gt;Because our devices are layer 2, each machine has its own mac address. Since a switch is a layer 2 device, it understands layer 2 mechanisms. Since each device on our network has a unique address, we need to keep track of those addresses. To do so, our switch keeps track of these addresses using something called a &lt;strong&gt;mac address table (MAT)&lt;/strong&gt;. As switches receive traffic, they populate the MAT.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsSAAALEgHS3X78AAACFUlEQVQoz2WS2WsTYRTF88+KC4gviuhjfSwUQYp9qVIookVcqlWphSR1i62hrXmoNUnbyTqTzr4vMT/vTA0GfTh8d/jmO/ece24pDENmEQRBcTqOg2VZGLrO8tIKz5+tE7g+kWqhNTsc7hxw9K1Bs97AUFR81STwA0o5wRSzhL7vS+1jWx43b99i/t4CQV8arO9xuvaJ1moZ9ekX1Jd1hmvb6G/38RyXUv44ikJmiQv8IU+TjJOhwqkgiRNM16anDuhrA5zQIR5n6O4IL/IKEaIwxPND+TklieJCXTSDMIqIbZdY7PrybVsOum5wdmZgSB3Je11cGKYrloVw632Fyxeu8ujVE7qGykguNNMWOKiGJbNMWNxd5PHBChNR55sDQkslMIfE1ohW/wfzdxe4fu0GnW6f0u7uHkv3H1KpfcAJXJEdiOJzuNIxiTJe/3xD+bjMWBz4vksos43D/C5kZGu82NjgwfIq3U6XUpIkTIAsHYvFSCwHM6kHhe00GRPLSCIhDByDnnLMUbNNV2kTakMyy4TJpBhPkfI00fNA/iYdCOFYyL4e7rDfavArm/C9/pnt8ibVzU3qlW1qlY9U323RPmqSiyv9m+50dTwvTy0fts2li1eYm7tTqOz2+pycKnQUBbU3QOl0aB230UaaOIj+J5wiX2zbtjkzdKrVGrVavXCSq0hT2YgkJc5rObM0k2Zx8e43Uyfhs2a8kIQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;switch&quot;
+        title=&quot;switch&quot;
+        src=&quot;/static/11318d3a96e415cdd77ffa35221bf230/fcda8/switch-2.png&quot;
+        srcset=&quot;/static/11318d3a96e415cdd77ffa35221bf230/12f09/switch-2.png 148w,
+/static/11318d3a96e415cdd77ffa35221bf230/e4a3f/switch-2.png 295w,
+/static/11318d3a96e415cdd77ffa35221bf230/fcda8/switch-2.png 590w,
+/static/11318d3a96e415cdd77ffa35221bf230/efc66/switch-2.png 885w,
+/static/11318d3a96e415cdd77ffa35221bf230/c83ae/switch-2.png 1180w,
+/static/11318d3a96e415cdd77ffa35221bf230/01ccc/switch-2.png 1399w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now let&apos;s assume that the MAT is populated and A needs to send data to B. It creates the frame and sends it over to the switch via layer 1. Switch sees the frame arrive at the port to which A is connected to. At this point 1 of 2 things will happen:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If switch didn&apos;t know which port the destination MAC address was on, it will forward this frame to all the ports&lt;/li&gt;
+&lt;li&gt;If switch does know which port the destination MAC address is attached to, it will use that one port to forward the frame&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Switches also do not forward collisions therefore reducing the scope of collisions.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsSAAALEgHS3X78AAACbElEQVQozyWT2U9TQRjF++caEx/0RX3ALcZEffCFiDFRE30QUVOWiEhYCi1LKNAFeqELdL297d33pQo/p+Xhy0wm35xz5sz5UkEQEMcxo9GIJEkYiUqSmFCc27aN57qsLP3h+2wa07CIbR97oFMtS9REVUsV+pddAtMlcD1SYRjS6Xa5bDTotNs0Lpt0e32a7Y4475DECa9fveHWndv0W32cdQl5bo/qlw3kr1kG6UOUH7sMv+VwLgakoijiKH/IQjrN4uIi+Wyew1yBzGoG6fycRDc5+7VMsXlCHMbYloXck+l1e+jaYEJo2wa6ruB5vgAUzw29GGNoTBoVuU9f7k2eFYiGMPCJOwrXbkwgyB3HRTdMNF1HNS0CP8APYkwvmuxTxeIJUw+fkV5ZQLWGuALYFapsVccSF63dIr83P/Op/IHE94VPAsSzJxV5DqajspxZYer+Y7LZXVL5fIHnT14yt/STvqWiC3NV00YzHUFg4xg+S9VVZgozjGyhWpCGjkbsaoxcHccTgFurPH30gvW1DVJBEKKoGrpiYA51TEXF1Uz0oYo2FIqFqtb8PFq5QvTvmkhYYAjven2FjrAmtHRi02Qk/A3C6OaXd3ZybG1sUj84QdovcpmvUNkrcLS9j64atBtlCqd7XF2B3K5zkFsjm9nkaCtDeW+f4+0c9dIp4RjQFwpqtRqnlVO6jRbVs3Ma1TrdepMLqSZ8Cpl+9557D+5iCxt6skyxLIgliVa1QfW8xnGphHR2xhhronAc7HGowzia7GMRbMd1MExhg20xK0L9dvojymDI3/EAjHvG6Yhu+ifDINbxkPwH7JvQtP/XpjcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;switch-2&quot;
+        title=&quot;switch-2&quot;
+        src=&quot;/static/2c4051c47847e581c20ae5dd93a892eb/fcda8/switch-3.png&quot;
+        srcset=&quot;/static/2c4051c47847e581c20ae5dd93a892eb/12f09/switch-3.png 148w,
+/static/2c4051c47847e581c20ae5dd93a892eb/e4a3f/switch-3.png 295w,
+/static/2c4051c47847e581c20ae5dd93a892eb/fcda8/switch-3.png 590w,
+/static/2c4051c47847e581c20ae5dd93a892eb/efc66/switch-3.png 885w,
+/static/2c4051c47847e581c20ae5dd93a892eb/c83ae/switch-3.png 1180w,
+/static/2c4051c47847e581c20ae5dd93a892eb/01ccc/switch-3.png 1399w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Encryption]]></title><description><![CDATA[Intro Encryption is the method by which information is converted into secret code that hides the information's true meaning. The science of…]]></description><link>https://iqbalyarkhan.github.io/Encryption/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Encryption/</guid><pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Encryption is the method by which information is converted into secret code that hides the information&apos;s true meaning. The science of encrypting and decrypting information is called cryptography.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Unencrypted&lt;/strong&gt; data is &lt;strong&gt;plaintext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Encrypted&lt;/strong&gt; data is &lt;strong&gt;ciphertext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
