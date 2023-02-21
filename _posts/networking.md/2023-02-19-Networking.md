@@ -35,7 +35,7 @@ At this layer, the two connected machines agree on a standard where a certain vo
 
 ### Hub
 
-What if we want to add more machines to our system? Not just 2? We can use a 4 port hub (to connect 4 machines) to connect 4 machines with each other. The job of a hub is simple: anything received by the hub on any port is transmitted on every other port (including errors and collisions!). See issues here?
+What if we want to add more machines to our system? Not just 2? We can use a layer 1 device called a 4 port hub (to connect 4 machines) to connect 4 machines with each other. The job of a hub is simple: anything received by the hub on any port is transmitted on every other port (including errors and collisions!). See issues here?
 
 - All data is processed by all devices (you can't direct data to a specific port/machine)
 - No way to prevent multiple devices from transmitting at once. So if 2 devices transmit at once, it will cause a collision. Also layer 1 cannot detect when a collision occurs. It lacks any intelligence.
@@ -72,3 +72,36 @@ Destination MAC address, source MAC address and type are referred to as MAC head
 After the header, we have the payload which can range from 46 to 1500 bytes. This contains the data that the frame is sending which is generally provided by layer 3.
 
 At the end there's the frame check sequence that is used to identify any errors in the frame. It allows the destination to check whether any corruption has occurred or not.
+
+### Layer 2 Complete Flow
+
+Let's checkout a complete flow:
+
+![recap](recap.png)[Credit: learn.cantrill.io](learn.cantrill.io)
+
+Say the machine on the left, let's call it L, needs to send data to machine on the right, R. L knows MAC address of R. L interacts with layer 2 software saying that it needs to send data to R via an ethernet. Data to be transmitted is stored in the payload part of the frame. Layer 2 can communicate with layer 1 the networking stack and it can look for the signs of a "carrier" signal. Layer 2 is looking to "sense" a carrier. A carrier signal means that there's already data in the signal and we don't want to corrupt existing data. This is the job of CSMA (carrier sense multiple access). If a carrier isn't detected, the frame is passed on to layer 1. This comes in handy in the scenario where R layer 2 is also trying to send data while L is transmitting. Detection of carrier signal will prompt R to wait until it gets the all clear.
+
+What if there was no carrier detected and both layer 2s transmitted data? Layer 2 contains collision detection. This is the job of collision detection where a jam signal is sent out by all devices that detected a collision. Then a random backoff occurs. This is random as it will allow a device at random to start transmitting again.
+
+Layer 1 doesn't understand what the frame is. It just receives the data from layer 2 and transmits it across. R side receives the data and passes it up to its layer 2. R layer 2 reviews destination mac address of the frame and passes it to R machine.
+
+![recap2](recap-2.png)[Credit: learn.cantrill.io](learn.cantrill.io)
+
+In this approach we've encapsulated data into frames for transmission!
+
+### Switch
+
+Now remember our example from earlier in layer 1 where we had a hub that connected 4 devices? To do the same at layer 2, we use something called a switch! Hub was a layer 1 device and had layer 1 limitations. Switch is a layer 2 device and holds a great advantage over hubs! Let's say we have a machine at 12 O'clock (A) transmitting to machine at 3 O'Clock (B):
+
+Because our devices are layer 2, each machine has its own mac address. Since a switch is a layer 2 device, it understands layer 2 mechanisms. Since each device on our network has a unique address, we need to keep track of those addresses. To do so, our switch keeps track of these addresses using something called a **mac address table (MAT)**. As switches receive traffic, they populate the MAT.
+
+![switch](switch-2.png)[Credit: learn.cantrill.io](learn.cantrill.io)
+
+Now let's assume that the MAT is populated and A needs to send data to B. It creates the frame and sends it over to the switch via layer 1. Switch sees the frame arrive at the port to which A is connected to. At this point 1 of 2 things will happen:
+
+- If switch didn't know which port the destination MAC address was on, it will forward this frame to all the ports
+- If switch does know which port the destination MAC address is attached to, it will use that one port to forward the frame
+
+Switches also do not forward collisions therefore reducing the scope of collisions.
+
+![switch-2](switch-3.png)[Credit: learn.cantrill.io](learn.cantrill.io)
