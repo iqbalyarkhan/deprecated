@@ -105,3 +105,19 @@ Now let's assume that the MAT is populated and A needs to send data to B. It cre
 Switches also do not forward collisions therefore reducing the scope of collisions.
 
 ![switch-2](switch-3.png)[Credit: learn.cantrill.io](learn.cantrill.io)
+
+## Binary to Decimal
+
+At times, we'll have to convert IPv4 addresses from decimal to binary. Here's an IPv4 address: `133.33.33.7`. Each value between the dot is 8 bytes which means this is a 32 bit number. Converting this to binary should be easy! We'll use this table to perform our conversion:
+
+![decimal-to-binary](decimal-binary.png)
+
+Let's start from left to right in both the table and with our IPv4 address. So:
+
+- pick 133 and keep going down the table until you find the largest value that's <= 133
+- look at the table above and notice that 128 < 133, so put a 1 in that position. Now we're left with 5 (133 - 28 = 5)
+- Keep moving down the table until you get to largest number that's <= 5 which is 4. Put a 1 in that position. Now we're left with 1 (5 - 4 = 1)
+- Keep going down and put a 1 at position 8.
+- All untouched positions will have a 0:
+
+`10000101`
