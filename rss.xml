@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Feb 2023 04:22:04 GMT</lastBuildDate><item><title><![CDATA[Networking Foundations]]></title><description><![CDATA[Intro We'll look at a few different "types" of networks present. There's local networking that deals with how data moves between devices on…]]></description><link>https://iqbalyarkhan.github.io/Networking/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Networking/</guid><pubDate>Sun, 19 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Full.Stack | Feed]]></title><description><![CDATA[A place to document my learnings]]></description><link>https://iqbalyarkhan.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Feb 2023 04:41:43 GMT</lastBuildDate><item><title><![CDATA[Networking Foundations]]></title><description><![CDATA[Intro We'll look at a few different "types" of networks present. There's local networking that deals with how data moves between devices on…]]></description><link>https://iqbalyarkhan.github.io/Networking/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Networking/</guid><pubDate>Sun, 19 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
 &lt;p&gt;We&apos;ll look at a few different &quot;types&quot; of networks present.&lt;/p&gt;
 &lt;p&gt;There&apos;s local networking that deals with how data moves between devices on your local network.&lt;/p&gt;
 &lt;p&gt;There&apos;s routing: how data moves from your network to another network (AWS, Netflix etc)&lt;/p&gt;
@@ -264,7 +264,50 @@
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
-    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Encryption]]></title><description><![CDATA[Intro Encryption is the method by which information is converted into secret code that hides the information's true meaning. The science of…]]></description><link>https://iqbalyarkhan.github.io/Encryption/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Encryption/</guid><pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
+    &lt;/span&gt;&lt;a href=&quot;learn.cantrill.io&quot;&gt;Credit: learn.cantrill.io&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;binary-to-decimal&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#binary-to-decimal&quot; aria-label=&quot;binary to decimal permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Binary to Decimal&lt;/h2&gt;
+&lt;p&gt;At times, we&apos;ll have to convert IPv4 addresses from decimal to binary. Here&apos;s an IPv4 address: &lt;code class=&quot;language-text&quot;&gt;133.33.33.7&lt;/code&gt;. Each value between the dot is 8 bytes which means this is a 32 bit number. Converting this to binary should be easy! We&apos;ll use this table to perform our conversion:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8a4cc1aea3125b29e163e0d3b751ad23/c65fa/decimal-binary.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 12.162162162162163%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsSAAALEgHS3X78AAAAYElEQVQI1zWNOw4AIRBCvf+5LOy1tbLyE//WbCDZgrwhYcDsvdFaQwgBMUaMMXDvRSkF5xzxz8w50XuX1loi89SfMTTee1hr4ZxT6XsPKSU95ZxFFpO1VhXw5gBFz3HyA070lcL6RjvSAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;decimal-to-binary&quot;
+        title=&quot;decimal-to-binary&quot;
+        src=&quot;/static/8a4cc1aea3125b29e163e0d3b751ad23/fcda8/decimal-binary.png&quot;
+        srcset=&quot;/static/8a4cc1aea3125b29e163e0d3b751ad23/12f09/decimal-binary.png 148w,
+/static/8a4cc1aea3125b29e163e0d3b751ad23/e4a3f/decimal-binary.png 295w,
+/static/8a4cc1aea3125b29e163e0d3b751ad23/fcda8/decimal-binary.png 590w,
+/static/8a4cc1aea3125b29e163e0d3b751ad23/efc66/decimal-binary.png 885w,
+/static/8a4cc1aea3125b29e163e0d3b751ad23/c83ae/decimal-binary.png 1180w,
+/static/8a4cc1aea3125b29e163e0d3b751ad23/c65fa/decimal-binary.png 1434w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let&apos;s start from left to right in both the table and with our IPv4 address. So:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pick 133 and keep going down the table until you find the largest value that&apos;s &amp;#x3C;= 133&lt;/li&gt;
+&lt;li&gt;look at the table above and notice that 128 &amp;#x3C; 133, so put a 1 in that position. Now we&apos;re left with 5 (133 - 28 = 5)&lt;/li&gt;
+&lt;li&gt;Keep moving down the table until you get to largest number that&apos;s &amp;#x3C;= 5 which is 4. Put a 1 in that position. Now we&apos;re left with 1 (5 - 4 = 1)&lt;/li&gt;
+&lt;li&gt;Keep going down and put a 1 at position 8.&lt;/li&gt;
+&lt;li&gt;All untouched positions will have a 0:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;10000101&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Encryption]]></title><description><![CDATA[Intro Encryption is the method by which information is converted into secret code that hides the information's true meaning. The science of…]]></description><link>https://iqbalyarkhan.github.io/Encryption/</link><guid isPermaLink="false">https://iqbalyarkhan.github.io/Encryption/</guid><pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;intro&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Encryption is the method by which information is converted into secret code that hides the information&apos;s true meaning. The science of encrypting and decrypting information is called cryptography.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Unencrypted&lt;/strong&gt; data is &lt;strong&gt;plaintext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Encrypted&lt;/strong&gt; data is &lt;strong&gt;ciphertext&lt;/strong&gt; (could be text, image, document etc)&lt;/p&gt;
