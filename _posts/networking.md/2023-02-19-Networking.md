@@ -121,3 +121,27 @@ Let's start from left to right in both the table and with our IPv4 address. So:
 - All untouched positions will have a 0:
 
 `10000101`
+
+## Layer 3
+
+Layer 3 requires layers 2 and 1. Layer 3's job is to get data from one location (for example a server hosting a video) to another (your laptop). So far we've talked about how machines on the same local area network talk to each other. But what about communication between 2 LANs? Layer 3 is the common protocol that helps communication between multiple layer 2 networks.
+
+Layer 3 adds the internet protocol, or IP, to layer 2. This allows for cross-network (across LANs) IP addressing and routing to move data without direct point-to-point (P2P) links. IP "packets" are moved step by step from source to destination via intermediate networks while encapsulated in different frames along the way.
+
+Devices that move packets across networks are called routers. They remove frame encapsulation and add new frame encapsulation at every hop.
+
+### Packets
+
+Similar to frames, packets encapsulate data that needs to be moved from one machine to another. The difference with packets is that unlike frames, packets can be transferred from destinations not in the same LAN as the source. Packets are placed inside frames where a frame is specific to the local network through which our packet is moving. The frame changes every time packet moves to a new network. The packet remains unchanged (in most cases).
+
+### Packet Structure
+
+Packets can be of 2 types: v4 or v6. For our use-case, we'll focus on a few important fields within a packet (anything not in blue):
+
+![v4-v6](v4-v6.png)
+
+- Source/Destination IP address
+- Time to live or Hop limit (number of hops before the packet "expires"). This is to prevent infinite forwarding
+- Protocol: Layer 4 protocol used (TCP, UDP, ICMP)
+
+Notice for v6, we have a larger address field.
