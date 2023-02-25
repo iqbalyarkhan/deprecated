@@ -35,11 +35,11 @@ let b = 'hello'; // b is a string
 let c = [true, false]; // c is an array of booleans
 ```
 
-TypeScript is a gradually typed language. That means that TypeScript works best when it knows the types of everything in your program at compile time, but it doesn’t have to know every type in order to compile your program. Even in an untyped pro‐ gram TypeScript can infer some types for you and catch some mistakes, but without knowing the types for everything, it will let a lot of mistakes slip through to your users. TypeScript statically analyzes your code for errors, and shows them to you before you run it.
+TypeScript is a gradually typed language. That means that TypeScript works best when it knows the types of everything in your program at compile time, but it doesn’t have to know every type in order to compile your program. Even in an untyped program, TypeScript can infer some types for you and catch some mistakes, but without knowing the types for everything, it will let a lot of mistakes slip through to your users. TypeScript statically analyzes your code for errors, and shows them to you before you run it.
 
 ## tsconfig.json
 
-Every TypeScript project should include a file called tsconfig.json in its root directory. This tsconfig.json is where TypeScript projects define things like which files should be compiled, which directory to compile them to, and which version of JavaScript to emit.
+Every TypeScript project should include a file called `tsconfig.json` in its root directory. This tsconfig.json is where TypeScript projects define things like which files should be compiled, which directory to compile them to, and which version of JavaScript to emit.
 
 ```ts
 {
@@ -63,7 +63,7 @@ Every TypeScript project should include a file called tsconfig.json in its root 
 
 ## tslint.json
 
-Your project should also have a tslint.json file containing your TSLint configuration, codifying whatever stylistic conventions you want for your code (tabs versus spaces, etc.).
+Your project should also have a `tslint.json` file containing your TSLint configuration, codifying whatever stylistic conventions you want for your code (tabs versus spaces, etc.).
 
 The following command will generate a tslint.json file with a default TSLint configuration:
 
@@ -86,368 +86,258 @@ You can then add overrides to this to conform with your own coding style. For ex
 }
 ```
 
-## Component
+## index.ts
 
-Let's look at our first react component:
+Now that you’ve set up your tsconfig.json and tslint.json, create a src folder containing your first TypeScript file:
 
-```tsx
-import React from 'react';
-function App() {
-  //Do something
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
-}
-
-export default App;
+```bash
+mkdir src
+touch src/index.ts
 ```
 
-First, this React component, called `App` component, is just a JavaScript function. It’s commonly called function component, because there are other variations of React components.
+Your project’s folder structure should now look this:
 
-Second, the App component doesn’t receive any parameters in its function signature yet. And third, the App component returns code that resembles HTML which is called JSX. The function component possess implementation details like any other JavaScript function (placeholder above is the //Do something comment).
-
-Variables defined in the function’s body will be re-defined each time this function runs, like all JavaScript functions:
-
-```tsx
-import React from 'react';
-function App() {
-  const title = 'React';
-  return (
-    <div>
-      <h1>Hello World, this is ${title}</h1>
-    </div>
-  );
-}
-export default App;
+```text
+    chapter-2/
+    ├──node_modules/
+    ├──src/
+    │ └──index.ts
+    ├──package.json
+    ├──tsconfig.json
+    └──tslint.json
 ```
 
-The `title` variable can also be define outside the function. Running the above would print `Hello World, this is React`.
-
-Let's look at some more elements. An input field with a label can be defined as follows:
+Pop open src/index.ts in your code editor, and enter the following TypeScript code:
 
 ```tsx
-import React from 'react';
-const title = 'React';
-function App() {
-  return (
-    <div>
-      <h1>Hello {title}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-    </div>
-  );
-}
-export default App;
+console.log('Hello TypeScript!');
 ```
 
-We specified three HTML attributes here: htmlFor, id, and type. Where id and type should be familiar from native HTML, htmlFor might be new. The htmlFor reflects the for attribute in HTML. JSX replaces a handful of internal HTML attributes, but you can find all the supported HTML attributes33 in React’s documentation, which follow the camelCase naming convention.
-
-Let's modify our greeting a little:
+Then, compile and run your TypeScript code:
 
 ```tsx
-import React from 'react';
+# Compile your TypeScript with TSC
+./node_modules/.bin/tsc
+# Run your code with NodeJS
+node ./dist/index.js
+```
 
-const welcome = {
-  greeting: 'hey',
-  title: 'React',
+This will print `Hello Typescript` in your terminal! With `ts-node` installed, you can simply do this:
+
+```bash
+ts-node index.ts
+```
+
+## Types
+
+Officially a type is set of values and the things you can do with them. For example:
+
+• The boolean type is the set of all booleans (there are just two: true and false)
+and the operations you can perform on them (like ||, &&, and !).
+
+• The number type is the set of all numbers and the operations you can perform on them (like +, -, \*, /, %, ||, &&, and ?), including the methods you can call on them like .toFixed, .toPrecision, .toString, and so on.
+
+• The string type is the set of all strings and the operations you can perform on them (like +, ||, and &&), including the methods you can call on them like .concat and .toUpperCase.
+
+When you see that something is of type T, not only do you know that it’s a T, but you also know exactly what you can do with that T (and what you can’t). Remember, the whole point is to use the typechecker to stop you from doing invalid things. And the way the typechecker knows what’s valid and what’s not is by looking at the types you’re using and how you’re using them.
+
+You can also define your own type:
+
+```tsx
+type Programmer = {
+  /**
+   * The full name of the Programmer
+   */
+  name: string;
+  /**
+   * This Programmer is known for what?
+   */
+  knownFor: string[];
 };
 
-function App() {
-  return (
-    <div>
-      <h1>
-        {welcome.greeting} {welcome.title}
-      </h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-    </div>
-  );
-}
-export default App;
+const ada: Programmer = {
+  name: 'Ada Lovelace',
+  knownFor: ['Mathematics', 'Computing', 'First Programmer'],
+};
 ```
 
-We can also call functions from within the curly braces:
+Comments you see above are docstring comments.
+
+Here's what typescript's type hierarchy looks like:
+
+![](type-hierarchy.png)
+
+Say you have a function that takes some value and returns that value multiplied by itself:
 
 ```tsx
-import React from 'react';
-
-function getGreeting() {
-  return 'hey React!';
+function squareOf(n) {
+  return n * n;
 }
-
-function App() {
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-    </div>
-  );
-}
-export default App;
+// squareOf(2) evaluates to 4
+// squareOf('z') evaluates to NaN
 ```
 
-## Lists in React
-
-So far we’ve rendered a few primitive variables in JSX; next we’ll render a list of items. We’ll experiment with sample data at first, then we’ll apply that to fetch data from a remote API. First, let’s define the array as a variable. As before, we can define a variable outside or inside the component. The following defines it outside:
+Clearly, this function will only work for numbers—if you pass anything besides a number to squareOf, the result will be invalid. So what we do is explicitly annotate the parameter’s type:
 
 ```tsx
-
-const list = [
-  {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  {
-    title: 'Redux',
-    url: 'https://redux.js.org/',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-  },
-];
-function App() {...}
-export default App;
+function squareOf(n: number) {
+  return n * n;
+}
 ```
 
-Each item in the list has a title, a url, an author, an identifier (objectID), points – which indicate the popularity of an item – and a count of comments. Next, we’ll render the list within our JSX dynamically:
+We can say the following things about the last code example:
+
+1. squareOf’s parameter n is constrained to number.
+
+2. The type of the value 2 is assignable to (equivalently: compatible with) number.
+
+Without a type annotation, squareOf is unconstrained in its parameter, and you can pass any type of argument to it. Once we constrain it, TypeScript goes to work for us verifying that every place we call our function, we call it with a compatible argument.
+
+### any
+
+any is the Godfather of types. It does anything for a price, but you don’t want to ask any for a favor unless you’re completely out of options. In TypeScript everything needs to have a type at compile time, and any is the default type when you (the pro‐ grammer) and TypeScript (the typechecker) can’t figure out what type something is. It’s a last resort type, and you should avoid it when possible. any is the set of all values, and you can do anything with any. That means that if you have a value of type any you can add to it, multiply by it, call .pizza() on it—anything.
 
 ```tsx
-function App() {
-  return (
-    <div>
-      <h1>My Hacker Stories</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <hr />
-      {/* render the list here */}
-    </div>
-  );
-}
+let a: any = 666; // any
+let b: any = ['danger']; // any
+let c = a + b; // any
 ```
 
-By assigning a key attribute to each list item’s element, React can identify modified items if the list changes (e.g. re-ordering). Fortunately, our list items come with an identifier:
+Using any in the above, no errors are thrown! My compiler returned this:
 
 ```tsx
-function App() {
-  return (
-    <div>
-      {' '}
-      ...
-      <hr />
-      {list.map(function (item) {
-        return <div key={item.objectID}>{item.title}</div>;
-      })}{' '}
-    </div>
-  );
-}
+666danger
 ```
 
-Note that we're using `item.ObjectID` as the `key` in our list. We avoid using the index of the item in the array to make sure the key attribute is a stable identifier. If the list changes its order, for example, React will not be able to identify the items properly. Here's what our code looks like right now:
+### unknown
+
+For the few cases where you have a value whose type you really don’t know ahead of time, don’t use any, and instead reach for unknown. Like any, it represents any value, but TypeScript won’t let you use an unknown type until you refine it by checking what it is. (more on refinement later)
+
+### boolean
 
 ```tsx
-import React from 'react';
-
-const list = [
-  {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  {
-    title: 'Redux',
-    url: 'https://redux.js.org/',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-  },
-];
-
-function getGreeting() {
-  return 'hey React!';
-}
-
-function App() {
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <hr />
-      {list.map(function (item) {
-        return <div key={item.objectID}>{item.title}</div>;
-      })}{' '}
-    </div>
-  );
-}
-export default App;
+leta = true;
+var b = false;
+const c = true;
+let d: boolean = true;
+let e: true = true;
+let f: true = false; // Error TS2322: Type 'false' is not assignable to type 'true'.
 ```
 
-We can display multiple fields from our list instead of just the title like so:
+`e` isn’t just any old boolean—it’s the specific boolean true. By using a value as a type, we essentially limited the possible values for `e` and `f` from all booleans to one specific boolean each. This feature is called **type literals**.
+
+**type literal** : A type that represents a single value and nothing else
+
+### number
+
+number is the set of all numbers: integers, floats, positives, negatives, Infinity, NaN, and so on. Numbers can do, well, numbery things, like addition (+), subtraction (-), modulo (%), and comparison (<).Example:
 
 ```tsx
-function App() {
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <hr />
-      {list.map(function (item) {
-        return (
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>{' '}
-            written by {item.author}
-          </div>
-        );
-      })}{' '}
-    </div>
-  );
-}
+let a = 1234;
+var b = Infinity * 0.1;
+const c = 5678;
+let d = a < b; //bool
+let e: number = 100;
+let f: 26.218 = 26.218; // 26.218
+f = 27; // Type '27' is not assignable to type '26.218'
+let g: 26.218 = 10; // Error TS2322: Type '10' is not assignable to type '26.218'.
 ```
 
-The component above is getting too complicated, let's create a new list component on its own. To do so, I'll export the list to its own file called `list.ts`. This is what our App component looks like:
+### objects
+
+TypeScript’s object types specify the shapes of objects. If you try this:
 
 ```tsx
-import { List } from './List';
-
-function getGreeting() {
-  return 'hey React!';
-}
-
-function App() {
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <hr />
-      <List />
-    </div>
-  );
-}
-export default App;
+let a: object = { b: 'x' };
 ```
 
-Notice we're importing `List` from a separate file:
+you'll get an error saying: `Property 'b' does not exist on type 'object'`. Wait, that’s not very useful! What’s the point of typing something as an object if you can’t do anything with it? `object` is a little narrower than any, but not by much. object doesn’t tell you a lot about the value it describes, just that the value is a JavaScript object (and that it’s not null).
+
+You can do 2 things:
+
+- Leave off the `object`:
 
 ```tsx
-const list = [
-  {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  {
-    title: 'Redux',
-    url: 'https://redux.js.org/',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-  },
-];
-
-export function List() {
-  return (
-    <div>
-      {list.map(function (item) {
-        return (
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>{' '}
-            written by {item.author}
-          </div>
-        );
-      })}{' '}
-    </div>
-  );
-}
+let a = { b: 'x' };
 ```
 
-With this example, we can see how components that encapsulate meaningful tasks can work for larger React applications.Larger React applications have component hierarchies (also called component trees). There is usually one uppermost entry point component (e.g. App) that spans a tree of components below it. The App is the parent component of the List, so the List is a child component of the App. In a component tree, the App is the root component, and the components that don’t render any other components are called leaf components (e.g. List). The App can have multiple children, as can the List. If the App has another child component, the additional child component is called a sibling component of the List.
-
-## index.js
-
-We've been ignoring one important file in our project: `index.js`:
+- Explicitly provide type for `b`:
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-ReactDOM.render(<App />, document.getElementById('root'));
+let a: { b: string } = {
+  b: 'hello!',
+};
+console.log(a.b);
 ```
 
-There is imported library called `react-dom`, in which a ReactDOM.render() function uses an HTML node to replace it with JSX. The process integrates React into HTML. ReactDOM.render() expects two arguments; the first is to render the JSX. It creates an instance of your App component, though it can also pass simple JSX without any component instantiation.
-
-The second argument specifies where the React application enters your HTML. It expects an element with an id='root', found in the public/index.html file. This is a basic HTML file.
-
-## onChange() handlers
-
-The App component still has the input field and label, which we haven’t used. In HTML outside of JSX, input fields have an onchange handler. This is what our App component looks like right now:
+This is called `object literal` syntax. Object literal syntax says, “Here is a thing that has this shape.” The thing might be an object literal, or it might be a class:
 
 ```tsx
-import { List } from './List';
-
-function getGreeting() {
-  return 'hey React!';
+let a: { firstName: string; lastName: string } = {
+  firstName: 'john',
+  lastName: 'barrowman',
+};
+class Person {
+  constructor(public firstName: string, public lastName: string) {}
 }
-
-function App() {
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-      <hr />
-      <List />
-    </div>
-  );
-}
-export default App;
+a = new Person('matt', 'smith'); // OK
 ```
 
-Let's define a handler function for the change event of the input field. This function can be passed to the `onChange` attribute (JSX named attribute) of the input field:
+`{firstName: string, lastName: string}` describes the shape of an object, and both the object literal and the class instance from the last example satisfy that shape, so TypeScript lets us assign a Person to `a`.
+
+Can you tell TypeScript that something is optional, or that there might be more properties than you planned for? You bet:
 
 ```tsx
-import { List } from './List';
-
-function getGreeting() {
-  return 'hey React!';
-}
-
-function App() {
-  //Handler function:
-  const handleChange = (event: any) => {
-    console.log(event);
-  };
-
-  return (
-    <div>
-      <h1>{getGreeting()}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" onChange={handleChange} />
-      <hr />
-      <List />
-    </div>
-  );
-}
-export default App;
+let a: {
+  b: number; // 1
+  c?: string; // 2
+  [key: number]: boolean; // 3
+};
 ```
+
+`a`:
+
+1. has property `b` that is a number
+
+2. might have a property `c` that is string that is optional. And if `c` exists, it might be undefined
+
+3. might have any number of numeric properties that are booleans. This too is optional
+
+Example:
+
+```tsx
+a = { b: 1, c: undefined, 10: true, 20: false, 30: true };
+a = { b: 1, c: undefined };
+a = { b: 1, c: 'd' };
+a = { b: 1, 10: true };
+a = { b: 1, 10: true, 20: false };
+```
+
+The `[key: T]: U` syntax is called an **index signature**, and this is the way you tell TypeScript that the given object might contain more keys. The way to read it is, “For this object, all keys of type T must have values of type U.” Index signatures let you safely add more keys to an object, in addition to any keys that you explicitly declared. What this means is that for `a`, if you have a number on the left, then it must have a boolean assigned:
+
+```tsx
+// not ok:
+let a: {
+  b: number;
+  c?: string;
+  2: string; // <-- NO!
+  [key: number]: boolean;
+};
+```
+
+Error for above will be: `Property '2' of type 'string' is not assignable to 'number' index type 'boolean'.ts(2411)`
+
+```tsx
+// this is ok:
+let a: {
+  b: number;
+  c?: string;
+  2: boolean;
+  5: boolean;
+  [key: number]: boolean;
+};
+
+a = { b: 1, c: undefined, 10: true, 20: false, 2: true, 5: false };
+```
+
+There is one rule to keep in mind for index signatures: the index signature key’s type, T, must be assignable to either number or string. [P30]
