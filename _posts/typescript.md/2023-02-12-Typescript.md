@@ -582,3 +582,77 @@ In addition to `null` and `undefined`, TypeScript also has `void` and `never`. T
 ### enums
 
 Enums are a way to enumerate the possible values for a type. They are unordered data structures that map keys to values. Think of them like objects where the keys are fixed at compile time, so TypeScript can check that the given key actually exists when you access it.
+
+By convention, enum names are uppercase and singular. Their keys are also uppercase.
+
+```tsx
+enum Frequency {
+  Monthly,
+  Daily,
+  Weekly,
+}
+console.log(frequency.MONTHLY);
+```
+
+TypeScript will automatically infer a number as the value for each member of your enum, but you can also set values explicitly. Let’s make explicit what TypeScript inferred in the previous example:
+
+```tsx
+enum Frequency {
+  Monthly = 0,
+  Daily = 1,
+  Weekly = 2,
+}
+```
+
+To retrieve a value from an enum, you access it with either dot or bracket notation— just like you would to get a value from a regular object:
+
+```tsx
+let monthly = Frequency.Monthly;
+let daily = Frequency['Daily'];
+```
+
+You can also use string values for enums, or even mix string and number values:
+
+```tsx
+enum Color {
+  Red = '#c10000',
+  Blue = '#007ac1',
+  Pink = 0xc10050, // A hexadecimal literal
+  White = 255, // decimal literal
+}
+```
+
+```tsx
+let a = Color.Red;
+// Error TS2339: Property 'Green' does not exist
+// on type 'typeof Color'.
+let b = Color.Green;
+// string
+let c = Color[0];
+// string (!!!) <--- UNSAFE!!
+let d = Color[6];
+```
+
+Use `const` so that it's safer:
+
+```tsx
+const enum Color {
+  Red = '#c10000',
+  Blue = '#007ac1',
+  Pink = 0xc10050, // A hexadecimal literal
+  White = 255, // decimal literal
+}
+```
+
+Accessing a valid enum would now require a string literal:
+
+```tsx
+// Error TS2476: A const enum member can only be
+// accessed using a string literal.
+Color[0];
+Color.Red;
+```
+
+In short, TypeScript comes with a bunch of built-in types. You can let TypeScript infer types for you from your values, or you can explicitly type your values. const will infer more specific types, let and var more general ones.
+
+## functions
