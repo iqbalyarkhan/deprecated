@@ -656,3 +656,212 @@ Color.Red;
 In short, TypeScript comes with a bunch of built-in types. You can let TypeScript infer types for you from your values, or you can explicitly type your values. const will infer more specific types, let and var more general ones.
 
 ## functions
+
+In JavaScript, functions are first-class objects. That means you can use them exactly like you would any other object: assign them to variables, pass them to other func‐ tions, return them from functions, assign them to objects and prototypes, write prop‐ erties to them, read those properties back, and so on. There is a lot you can do with functions in JavaScript, and TypeScript models all of those things with its rich type system.
+
+Here’s what a function looks like in TypeScript:
+
+```tsx
+function doubleIt(x: number) {
+  return 2 * x;
+}
+```
+
+You will usually explicitly annotate function parameters (a and b in this example)— TypeScript will always infer types throughout the body of your function, but in most cases it won’t infer types for your parameters, except for a few special cases where it can infer types from context (contextual typing later). The return type is inferred, but you can explicitly annotate it too if you want:
+
+```tsx
+function doubleIt(x: number): number {
+  return 2 * x;
+}
+```
+
+The last example used named function syntax to declare the function. TypeScript supports the following ways to do this:
+
+1. Named function
+
+```tsx
+function greet(name: string) {
+  return 'hello ' + name;
+}
+```
+
+2. Function Expression
+
+```tsx
+let greet2 = function (name: string) {
+  return 'hello ' + name;
+};
+```
+
+3. Arrow Function Expression
+
+```tsx
+let greet3 = (name: string) => {
+  return 'hello ' + name;
+};
+```
+
+4. Shorthand Arrow function expression
+
+```tsx
+let greet4 = (name: string) => 'hello ' + name;
+```
+
+### optional and default parameters
+
+Like in object and tuple types, you can use `?` to mark parameters as optional. When declaring your function’s parameters, required parameters have to come first, followed by optional parameters:
+
+```tsx
+function log(message: string, userId?: string) {
+  let time = new Date().toLocaleTimeString();
+  console.log(time, message, userId || 'Not signed in');
+}
+```
+
+You can provide default values for optional parameters. Semantically it’s similar to making a parameter optional, in that callers no longer have to pass it in (a difference is that default parameters don’t have to be at the end of your list of parameters, while optional parameters do):
+
+```tsx
+function withOptional(id: number, name = 'default name', age?: number) {
+  console.log('id: ' + id + ' name: ' + name + ' age: ' + (age ? age : 21));
+}
+
+// id: 123 name: Provided Name age: 18
+withOptional(123, 'Provided Name', 18);
+// id: 123 name: Provided Name age: 21
+withOptional(123, 'Provided Name');
+// id: 123 name: default name age: 21
+withOptional(123);
+```
+
+Notice how when we give name a default value, we remove its optional annotation, `?`. We also don’t have to type it anymore. TypeScript is smart enough to infer the parameter’s type from its default value, keeping our code terse and easy to read.
+
+Order is: required params > ones with default params > optional params
+
+### rest parameters
+
+Sometimes, you might opt for a variadic function API—one that takes a variable number of arguments—instead of a fixedarity API that takes a fixed number of arguments. For variadic functions, you use rest parameters:
+
+```tsx
+showRest(1, 2, 3, 4, 5);
+
+function showRest(...scores: number[]) {
+  let total = 0;
+  scores.forEach((score) => {
+    total += score;
+  });
+  console.log('final score is: ', total);
+}
+```
+
+Notice how we're not passing in an array BUT a variable number (no pun intended!) of numbers! `scores` is NOT of type array of numbers but is a rest parameter that accepts an unfixed number of numbers.
+
+A function can have at most one rest parameter, and that parameter has to be the last one in the function’s parameter list.
+
+### call signatures
+
+Let's talk about how we can express the full types of functions. Let’s look at a `sum` function:
+
+```tsx
+function sum(a: number, b: number): number {
+  return a + b;
+}
+```
+
+What is the type of `sum`? Well, sum is a function, so its type is: `Function`
+
+The Function type is not what you want to use most of the time. Like `object` describes all objects, `Function` is a catchall type for all functions, and doesn’t tell you anything about the specific function that it types.
+
+How else can we type sum? sum is a function that takes two numbers and returns a number. In TypeScript we can express its type as:
+
+```tsx
+// function sum(a: number, b: number): number {
+//   return a + b;
+// }
+(a: number, b: number) => number;
+```
+
+This is TypeScript’s syntax for a function’s type, or call signature (also called a type signature). You’ll notice it looks remarkably similar to an arrow function—this is intentional! When you pass functions around as arguments, or return them from other functions, this is the syntax you’ll use to type them. The parameter names a and b just serve as documentation, and don’t affect the assignability of a function with that type.
+
+Function call signatures only contain type level code: that is, types only, no values.
+
+Let’s go through a few of the examples of functions and pull out their types into standalone call signatures that we’ll bind to type aliases:
+
+```tsx
+// function greet(name: string)
+type Greet = (name: string) => string;
+
+// function log(message: string, userId?: string)
+type Log = (message: string, userId?: string) => void;
+
+// function sumVariadicSafe(...numbers: number[]): number
+type SumVariadicSafe = (...numbers: number[]) => number;
+```
+
+The functions’ call signatures (type level code) look remarkably similar to their implementations. This is intentional, and is a language design choice that makes call signatures easier to reason about.
+
+Let’s make the relationship between call signatures and their implementations more concrete. If you have a call signature, how can you declare a function that implements that signature? You simply combine the call signature with a function expression that implements it.
+
+Using the type `Log` from earlier, here's what we can do:
+
+```tsx
+type Log = (message: string, userId?: string) => void;
+
+let log: Log(
+  message,
+  userId =  'defaultUserId'
+) => {
+  let time = new Date().toISOString()
+  console.log(time, message, userId)
+}
+```
+
+1.  We declare a function expression `log`, and explicitly type it as type `Log`.
+
+2.  We don’t need to annotate our parameters twice. Since message is already annotated as a string as part of the definition for `Log`, we don’t need to type it again here. Instead, we let TypeScript infer it for us from `Log`.
+
+3.  We add a default value for `userId`, since we captured userId’s type in our signature for `Log`, but we couldn’t capture the default value as part of `Log` because `Log` is a type and can’t contain values.
+
+4.  We don’t need to annotate our return type again, since we already declared it as void in our Log type.
+
+Let's look at another example using the type `SumVariadicSafe` from earlier. Here's what we can do:
+
+```tsx
+type SumVariadicSafe = (...scores: number[]) => number;
+
+let sumIt: SumVariadicSafe = (...scores) => {
+  let total = 0;
+  scores.forEach((score) => {
+    total += score;
+  });
+  return total;
+};
+```
+
+1. We declare a function expression `sumIt`, and explicitly type it as type `SumVariadicSafe`.
+2. We don’t need to annotate our parameters twice. Since scores is already annotated as a rest parameter as part of the definition for `SumVariadicSafe`, we don’t need to type it again here. Instead, we let TypeScript infer it for us from `SumVariadicSafe`.
+
+### contextual typing
+
+Because we already declared that log is of type `Log`, TypeScript is able to infer from context that message has to be of type string. This is a powerful feature of TypeScript’s type inference called contextual typing.
+Let’s declare a function `times` that calls its callback `f` some number of times `n`, passing the current index to `f` each time: (“callback” is a function that you passed as an argument to another function.)
+
+```py
+function times(
+  f: (index: number) => void,
+  n: number
+) {
+    for (let i = 0; i < n; i++) {
+      f(i);
+    }
+}
+```
+
+When you call times, you don’t have to explicitly annotate the function you pass to times if you declare that function inline:
+
+```tsx
+times((n) => console.log(n), 4);
+```
+
+### overloaded functions
+
+P58
