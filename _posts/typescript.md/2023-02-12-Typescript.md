@@ -864,4 +864,148 @@ times((n) => console.log(n), 4);
 
 ### overloaded functions
 
-P58
+What we saw earlier is also called shorthand signature. There's also a full call signature that does exactly the same thing:
+
+```tsx
+// Shorthand call signature
+type Log = (message: string, userId?: string) => void;
+
+// Full call signature
+type Log = {
+  (message: string, userId?: string): void;
+};
+```
+
+For simple cases like our `Log` function, you should prefer the shorthand; but for more complicated functions, there are a few good use cases for full signatures. The first of these is overloading a function type: **overloaded function** is a function with multiple call signatures. You can use overloaded function signatures to design really expressive APIs. For example, let’s design an API to book a vacation—we’ll call it Reserve. Let’s start by sketching out its types (with a full type signature this time):
+
+```tsx
+type Reserve = {
+  (from: Date, to: Date, destination: string): Reservation;
+};
+```
+
+Let’s then stub out an implementation for Reserve:
+
+```tsx
+let reserve: Reserve = (from, to, destination) => {
+  // ...
+};
+```
+
+So a user who wants to book a trip to Bali has to call our reserve API with a from date, a to date, and "Bali" as a destination. We might repurpose our API to support one-way trips too:
+
+```tsx
+type Reservation = {
+  from: Date;
+  to?: Date;
+  destination: String;
+  message: String;
+};
+
+type Reserve = {
+  // Signature1
+  (from: Date, to: Date, destination: string): Reservation;
+  // Signature2
+  (from: Date, destination: string): Reservation;
+};
+
+let oneWayToBali: Reserve = (from, to, destination) => {
+  return {
+    from: from,
+    to: to,
+    destination: destination,
+    message: 'Thank you for flying to ' + to + ' from ' + from + ' with us!',
+  };
+};
+```
+
+For the above, `oneWayToBali` will return an error saying:
+
+```tsx
+Type '(from: Date, to: Date, destination: string) => { from: Date; to: Date; destination: string; message: string; }'
+is not assignable to type 'Reserve'.ts(2322)
+```
+
+This is because of the way call signature overloading works in TypeScript. If you declare a set of overload signatures for a function `f`, from a caller’s point of view `f`’s type is the union of those overload signatures. But from `f`’s implementation’s point of view, there needs to be a single, combined type that can actually be implemented. You need to manually declare this combined call signature when implementing `f`, it won’t be inferred for you. For our Reserve example, we can update our reserve function like this:
+
+```tsx
+// From:
+type Reserve = {
+  (from: Date, to: Date, destination: string): Reservation;
+  (from: Date, destination: string): Reservation;
+};
+// To:
+type Reserve = {
+  (from: Date, toOrDestination: Date, destination?: string): Reservation;
+};
+```
+
+The implementation’s new signature is the result of us manually combining the two overload signatures (in other words, we computed `Signature1` | `Signature2` by hand). Note that the combined signature isn’t visible to functions that call reserve; from a consumer’s point of view, Reserve’s signature is:
+
+```tsx
+type Reserve = {
+  (from: Date, to: Date, destination: string): Reservation;
+  (from: Date, destination: string): Reservation;
+};
+```
+
+Here's a full example making use of the overloaded function. We have a one way trip to Bali and a round trip to Mexico:
+
+```tsx
+// Returned from Reserve
+type Reservation = {
+  from: Date;
+  toOrDestination?: Date | String;
+  message: String;
+};
+
+// Type to Reserve
+type Reserve = {
+  (from: Date, toOrDestination: Date | string, destination?: string): Reservation;
+};
+
+// Just some dates for testing
+const today = new Date();
+const to = new Date(today);
+to.setDate(to.getDate() + 3);
+```
+
+Here's the main function. If you want a one way trip, pass in a string to `toOrDestination` and leave optional param `destination` undefined. If you want a round trip, provide to date for `toOrDestination` and ALSO provide `destination` param.
+
+```tsx
+/**
+ * Function to make a reservation
+ * @param from Date you want to leave
+ * @param toOrDestination Could be date (to) for round trip or destination for 1 way
+ * @param destination Optional param only to be defined if it is a round trip.
+ * @returns Type Reservation
+ */
+let makeReservation: Reserve = (from, toOrDestination, destination): Reservation => {
+  let message = 'Thanks for flying ';
+  typeof toOrDestination == 'string'
+    ? (message = message + 'one way to ' + toOrDestination + '. You leave: ' + from.toString())
+    : (message =
+        message +
+        'round trip ' +
+        destination +
+        '. You leave: ' +
+        from.toString() +
+        ' and return ' +
+        toOrDestination.toString());
+  return {
+    from: from,
+    toOrDestination: toOrDestination,
+    message: message,
+  };
+};
+
+console.log(makeReservation(today, 'Bali').message);
+console.log('**********');
+console.log(makeReservation(today, to, 'Bali').message);
+```
+
+Since `makeReservation` might be called in either of two ways, when you implement `makeReservation` you have to prove to TypeScript that you checked how it was called (what I did with checking `toOrDestination`).
+
+### polymorphism
+
+P64
