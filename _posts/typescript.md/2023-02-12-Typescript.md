@@ -313,7 +313,7 @@ a = { b: 1, 10: true };
 a = { b: 1, 10: true, 20: false };
 ```
 
-The `[key: T]: U` syntax is called an **index signature**, and this is the way you tell TypeScript that the given object might contain more keys. The way to read it is, “For this object, all keys of type T must have values of type U.” Index signatures let you safely add more keys to an object, in addition to any keys that you explicitly declared. What this means is that for `a`, if you have a number on the left, then it must have a boolean assigned:
+The `[key: T]: U` `([key: number]: boolean)` syntax is called an **index signature**, and this is the way you tell TypeScript that the given object might contain more keys. The way to read it is, “For this object, all keys of type T (`number` in our example) must have values of type U (`boolean` in our example).” Index signatures let you safely add more keys to an object, in addition to any keys that you explicitly declared. What this means is that for `a`, if you have a number on the left, then it must have a boolean assigned:
 
 ```tsx
 // not ok:
@@ -340,4 +340,245 @@ let a: {
 a = { b: 1, c: undefined, 10: true, 20: false, 2: true, 5: false };
 ```
 
-There is one rule to keep in mind for index signatures: the index signature key’s type, T, must be assignable to either number or string. [P30]
+There is one rule to keep in mind for index signatures: the index signature key’s type, T, must be assignable to either number or string. More on index signatures [here](https://basarat.gitbook.io/typescript/type-system/index-signatures).
+
+Let's look at another index signature example: say you want to make sure that anything that is stored in an object using a string conforms to the structure `{message: string}`. This can be done with the declaration `{ [index:string] : {message: string} }`. This is demonstrated below:
+
+```tsx
+let foo: { [index: string]: { message: string } } = {};
+
+/**
+ * Must store stuff that conforms to the structure
+ */
+/** Ok */
+foo['a'] = { message: 'some message' };
+/** Error: must contain a `message` of type string. You have a typo in `message` */
+foo['a'] = { messages: 'some message' };
+
+/**
+ * Stuff that is read is also type checked
+ */
+/** Ok */
+foo['a'].message;
+/** Error: messages does not exist. You have a typo in `message` */
+foo['a'].messages;
+```
+
+Also note that you can use any word for the index signature key’s name—it doesn’t have to be key:
+
+```tsx
+let airplaneSeatingAssignments: { [seatNumber: string]: string } = {
+  '34D': 'Boris Cherny',
+  '34E': 'Bill Gates',
+};
+```
+
+You can also have lists as type. Say for example, I have an object representing different age groups:
+
+```tsx
+let ageGroups: {
+  [groupName: string]: number[];
+} = {};
+
+ageGroups['under18s'] = [17, 16, 15, 14, 13];
+```
+
+What you see above is an object literal notation special case: empty object types: `{}`. Every type except null and undefined is assignable to an empty object type, which can make it tricky to use. Try to avoid empty object types when possible! A better way to redo the prev example would be:
+
+```tsx
+let ageGroups: {
+  [groupName: string]: number[];
+} = { under18s: [17, 16, 15, 14, 13] };
+```
+
+Other examples to avoid:
+
+```tsx
+let danger: {};
+danger = {};
+danger = { x: 1 };
+danger = [];
+danger = 2;
+```
+
+To summarize, here are the ways to declare objects in TypeScript:
+
+1. They can be anonymous:.
+
+```tsx
+greet({ name: 'you', age: 12 });
+function greet(person: { name: string; age: number }) {
+  return 'Hello ' + person.name;
+}
+```
+
+2. They can be named by using either an interface:
+
+```tsx
+interface Person {
+  name: string;
+  age: number;
+}
+
+const me: Person = {
+  name: 'you',
+  age: 12,
+};
+
+greet(me);
+
+function greet(person: Person) {
+  console.log('Hello ' + person.name + "'re: " + person.age);
+}
+```
+
+3. or a type alias:
+
+```tsx
+type Person = {
+  name: string;
+  age: number;
+};
+
+function greet(person: Person) {
+  return 'Hello ' + person.name;
+}
+```
+
+### type aliases
+
+It’s common to want to use the same type more than once and refer to it by a single name. To do so, we can create an "alias": - a name for any type. The syntax for a type alias is:
+
+```tsx
+type Point = {
+  x: number;
+  y: number;
+};
+
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({ x: 100, y: 100 });
+```
+
+Type aliases are useful for DRYing up repeated complex types,5 and for making it clear what a variable is used for.
+
+### union and intersection types
+
+If you have two things A and B, the union of those things is their sum (everything in A or B or both), and the intersection is what they have in common (everything in both A and B). TypeScript gives us special type operators to describe unions and intersections of types: `|` for union and `&` for intersection. Since types are a lot like sets, we can think of them in the same way. Let's look at an example:
+
+```tsx
+type Cat = { name: string; purrs: boolean; social: boolean };
+type Dog = { name: string; wags: boolean; barks: boolean };
+type CatAndDog = Cat & Dog;
+type CatOrDogOrBoth = Cat | Dog;
+```
+
+If something is a CatOrDogOrBoth, what do you know about it? You know that it has a name property that’s a string, and not much else. On the flip side, what can you assign to a CatOrDogOrBoth? Well, a Cat, a Dog, or both:
+
+```tsx
+const fourLeggedCat: CatOrDogOrBoth = {
+  name: 'cat',
+  purrs: true,
+  social: false,
+};
+
+const fourLeggedDog: CatOrDogOrBoth = {
+  name: 'dog',
+  wags: true,
+  barks: true,
+};
+
+const fourLeggedBoth: CatOrDogOrBoth = {
+  name: 'catdog',
+  wags: true,
+  barks: true,
+  purrs: true,
+  social: false,
+};
+```
+
+This is worth reiterating: a value with a union type `|` isn’t necessarily one specific member of your union; in fact, it can be both members at once!
+
+On the other hand, what do you know about CatAndDog? Not only does your canine, feline hybrid super-pet have a name, but it can purr, bark, and wag:
+
+```tsx
+const kittyRocky: CatAndDog = {
+  name: 'kittyRocky',
+  purrs: true,
+  social: false,
+  wags: true,
+  barks: true,
+};
+```
+
+### arrays
+
+Like in JavaScript, TypeScript arrays are special kinds of objects that support things like concatenation, pushing, searching, and slicing. TypeScript supports two syntaxes for arrays: `T[]` and `Array<T>`. They are identical both in meaning and in performance.
+
+```tsx
+let a = [1, 2, 3]; // number[]
+var b = ['a', 'b']; // string
+let c: string[] = ['a']; //string
+let d = [1, 'a']; // (number | string)[]
+const e = [2, 'b']; // (number | string)[]
+let f = ['red'];
+f.push('blue');
+// Error TS2345: Argument of type 'true' is not
+// assignable to parameter of type 'string':
+f.push(true);
+```
+
+We initialized `f` with the string 'red'. We then pushed 'blue' onto it; 'blue' is a string, so TypeScript let it pass. Then we tried to push true onto the array, but that failed! Why? Because `f` is an array of strings, and true is not a string.
+
+On the other hand, when we initialized `d`, we gave it a number and a string, so TypeScript inferred that it must be an array of type number `|` string. Because each element might be either a number or a string, you have to check which it is before using it. Like with objects, creating arrays with const won’t hint to TypeScript to infer their types more narrowly. That’s why TypeScript inferred both d and e to be arrays of number | string.
+
+`g` below is the special case: when you initialize an empty array, TypeScript doesn’t know what type the array’s elements should be, so it gives you the benefit of the doubt and makes them any. As you manipulate the array and add elements to it, TypeScript starts to piece together your array’s type. Once your array leaves the scope it was defined in (for example, if you declared it in a function, then returned it), TypeScript will assign it a final type that can’t be expanded anymore:
+
+```tsx
+let g = []; // any[]
+g.push(1); // number[]
+g.push('red'); // string []
+```
+
+### tuples
+
+Tuples are subtypes of array. They’re a special way to type arrays that have fixed lengths, where the values at each index have specific, known types. Unlike most other types, tuples have to be explicitly typed when you declare them. That’s because the JavaScript syntax is the same for tuples and arrays (both use square brackets), and TypeScript already has rules for inferring array types from square brackets:
+
+```tsx
+let a: [number] = [1];
+// A tuple of [first name, last name, birth year]
+let b: [string, string, number] = ['malcolm', 'gladwell', 1963];
+
+// Error TS2322: Type 'string' is not assignable to type 'number':
+b = ['queen', 'elizabeth', 'ii', 1926];
+```
+
+Tuples also support rest elements, which you can use to type tuples with minimum lengths:
+
+```tsx
+// A list of strings with at least 1 element
+let friends: [string, ...string[]] = ['Sara', 'Tali', 'Chloe', 'Claire'];
+
+// A heterogeneous list
+let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c'];
+```
+
+### null, undefined, void, and never
+
+JavaScript has two values to represent an absence of something: `null` and `undefined`. TypeScript supports both of these as values, and it also has types for them: `null` and `undefined`. They’re both special types, because in TypeScript the only thing of type undefined is the value `undefined`, and the only thing of type null is the value `null`.
+
+`undefined` means that something hasn’t been defined yet.
+
+`null` means an absence of a value (like if you tried to compute a value, but ran into an error along the way).
+
+In addition to `null` and `undefined`, TypeScript also has `void` and `never`. These are really specific, special-purpose types that draw even finer lines between the different kinds of things that don’t exist:
+
+- `void` is the return type of a function that doesn’t explicitly return anything (for example, console.log)
+- `never` is the type of a function that never returns at all (like a function that throws an exception, or one that runs forever)
+
+### enums
+
+Enums are a way to enumerate the possible values for a type. They are unordered data structures that map keys to values. Think of them like objects where the keys are fixed at compile time, so TypeScript can check that the given key actually exists when you access it.
