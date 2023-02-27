@@ -1,8 +1,8 @@
 ---
-title: 'React and Typescript'
+title: 'Typescript'
 date: 2023-02-10
 tags:
-  - react
+  - typescript
 ---
 
 ## Intro
@@ -1008,4 +1008,62 @@ Since `makeReservation` might be called in either of two ways, when you implemen
 
 ### polymorphism
 
-P64
+So far, we've looked at concrete types: boolean, string, number etc. Concrete types are useful when you know precisely what type you’re expecting, and want to verify that type was actually passed. But sometimes, you don’t know what type to expect beforehand, and you don’t want to restrict your function’s behavior to a specific type!
+
+As an example, let’s implement filter. You use filter to iterate over an array and refine it; in JavaScript, it might look like this:
+
+```js
+function filter(array, f) {
+  let result = []
+  for (let i = 0; i < array.length; i++) {
+    let item = array[i] if (f(item)) {
+      result.push(item)
+    }
+  }
+  return result
+}
+
+filter([1, 2, 3, 4], _ => _ < 3) // evaluates to [1, 2]
+```
+
+Let’s start by pulling out filter’s full type signature, and adding some placeholder unknowns for the types:
+
+```tsx
+type Filter = {
+  (array: unknown, f: unknown) => unknown[]
+}
+```
+
+Now, let’s try to fill in the types with, say, number:
+
+```tsx
+type Filter = {
+  (array: number[], f: (item: number) => boolean): number[];
+};
+```
+
+Typing the array’s elements as number works well for this example, but filter is meant to be a generic function—you can filter arrays of numbers, strings, objects, other arrays, anything. The signature we wrote works for arrays of numbers, but it doesn’t work for arrays of other types of elements.
+
+To make filter more useful, we'll use **generic types parameters**: It is nothing but a placeholder type used to enforce a type-level constraint in multiple places. Also known as polymorphic type parameter.
+
+Going back to our filter example, here is what its type looks like when we rewrite it with a generic type parameter T:
+
+```tsx
+// Earlier:
+type Filter = {
+  (array: unknown, f: unknown) => unknown[]
+}
+
+//Generic:
+type Filter = {
+  <T>(array: T[], f: (item: T) => boolean): T[];
+};
+```
+
+What this means is that our type `Filter` will accept an array of type `T`, an `f` function that accepts item of type `T` that returns a boolean and finally our `Filter` will return an array of `T`s.
+
+This function filter uses a generic type parameter T; we don’t know what this type will be ahead of time, so we let TypeScript infer what it is each time we call filter. TypeScript infers T from the type we pass in for array. Once TypeScript infers what T is for a given call to filter, it substitutes that type in for every T it sees. T is like a placeholder type, to be filled in by the typechecker from context; it parameterizes Filter’s type, which is why we call it a generic type parameter.
+
+Because it’s such a mouthful to say “generic type parameter” every time, people often shorten it to just “generic type,” or simply “generic.”
+
+The angle brackets, `<>`, are how you declare generic type parameters (think of them like the type keyword, but for generic types); where you place the angle brackets scopes the generics (there are just a few places you can put them), and TypeScript makes sure that within their scope, all instances of the generic type parameters are eventually bound to the same concrete types.
