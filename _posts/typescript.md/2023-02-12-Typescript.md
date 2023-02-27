@@ -653,6 +653,27 @@ Color[0];
 Color.Red;
 ```
 
+### record types
+
+The `Record<Keys, Type>` type is a type that can ensure consistency in implementing a dictionary (key-value pairs) with fixed values/type for Keys and a defined type for the values. Record types keys have to be unique.
+
+```tsx
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+
+type CatName = 'miffy' | 'boris' | 'mordred';
+
+const cats: Record<CatName, CatInfo> = {
+  miffy: { age: 10, breed: 'Persian' },
+  boris: { age: 5, breed: 'Maine Coon' },
+  mordred: { age: 16, breed: 'British Shorthair' },
+};
+
+console.log(cats.boris.age);
+```
+
 In short, TypeScript comes with a bunch of built-in types. You can let TypeScript infer types for you from your values, or you can explicitly type your values. const will infer more specific types, let and var more general ones.
 
 ## functions
