@@ -545,8 +545,23 @@
 <li><a href="/React/#spread-operator">spread operator</a></li>
 </ul>
 </li>
-<li><a href="/React/#asynchronous-execution">asynchronous execution</a></li>
-<li><a href="/React/#component">Component</a></li>
+<li>
+<p><a href="/React/#asynchronous-execution">asynchronous execution</a></p>
+<ul>
+<li><a href="/React/#fetch-and-promise">fetch and promise</a></li>
+<li><a href="/React/#async-and-await">async and await</a></li>
+</ul>
+</li>
+<li><a href="/React/#imperative-vs-declarative">imperative vs declarative</a></li>
+<li>
+<p><a href="/React/#react">React</a></p>
+<ul>
+<li><a href="/React/#react-dom">react DOM</a></li>
+</ul>
+</li>
+<li><a href="/React/#react-rendering">react rendering</a></li>
+<li><a href="/React/#jsx">jsx</a></li>
+<li><a href="/React/#components">components</a></li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
 <li><a href="/React/#state">State</a></li>
 <li><a href="/React/#hooks">Hooks</a></li>
@@ -741,9 +756,281 @@ actionHero<span class="token punctuation">.</span><span class="token function">p
 <span class="token comment">// }</span></code></pre></div>
 <h2 id="asynchronous-execution" style="position:relative;"><a href="#asynchronous-execution" aria-label="asynchronous execution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>asynchronous execution</h2>
 <p>So far, we've seen synchronous execution. Let's see how we can make async calls:</p>
-<p>✋🚧✋ SECTIONS BELOW ARE FROM MY OLD STUDIES!</p>
-<h2 id="component" style="position:relative;"><a href="#component" aria-label="component permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Component</h2>
-<p>Let's create our first component:</p>
+<h3 id="fetch-and-promise" style="position:relative;"><a href="#fetch-and-promise" aria-label="fetch and promise permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>fetch and promise</h3>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> fetch <span class="token keyword">from</span> <span class="token string">'cross-fetch'</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://api.randomuser.me/?nat=US&amp;results=1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>We're fetching a response from an API using the <code class="language-text">fetch</code> library.</p>
+<p>Running the above returns: <code class="language-text">Promise { &lt;pending&gt; }</code>. What does that mean?! The promise is an object that represents whether the async operation is pending, has been completed, or has failed. The pending promise represents a state before the data has been fetched. We need to chain on a function called .then(). This function will take in a callback function that will run if the previous operation was successful. The then method will invoke the callback function once the promise has resolved. In other words, fetch some data, then convert response to JSON:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> fetch <span class="token keyword">from</span> <span class="token string">'cross-fetch'</span><span class="token punctuation">;</span>
+
+<span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'//api.github.com/users/lquixada'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">>=</span> <span class="token number">400</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Bad response from server'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">user</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>You see this gets ugly! Too many <code class="language-text">.then()</code> calls.</p>
+<h3 id="async-and-await" style="position:relative;"><a href="#async-and-await" aria-label="async and await permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>async and await</h3>
+<p>Using <code class="language-text">async</code> and <code class="language-text">await</code> is preferred because it looks more familiar, like code that’s found in a synchronous function. Instead of waiting for the results of a promise to resolve and handling it with a chain of then functions, <code class="language-text">async</code> functions can be told to wait for the promise to resolve before further executing any code found in the function.
+Let’s make another API request but wrap the functionality with an async function:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// async function</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getInfo</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">//await the result</span>
+    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'//api.github.com/users/lquixada'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">>=</span> <span class="token number">400</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Bad response from server'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">getInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Notice that the getFakePerson function is declared using the async keyword. This makes it an asynchronous function that can wait for promises to resolve before exe‐ cuting the code any further. The await keyword is used before promise calls. This tells the function to wait for the promise to resolve.</p>
+<h2 id="imperative-vs-declarative" style="position:relative;"><a href="#imperative-vs-declarative" aria-label="imperative vs declarative permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>imperative vs declarative</h2>
+<p>Functional programming is a part of a larger programming paradigm: <code class="language-text">declarative programming</code>. Declarative programming is a style of programming where applications are structured in a way that prioritizes <strong>describing what should happen</strong> over defining how it should happen.</p>
+<p>Contrast that with imperative programming which is a style of programming that’s only concerned with how to achieve results with code. Let's start with the imperative approach (one you're comfortable with!):</p>
+<p>First, let’s examine an imperative approach to this task. Replace white space with a dash:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'You are great'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> urlFriendly <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token builtin">string</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    urlFriendly <span class="token operator">+=</span> <span class="token string">'-'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    urlFriendly <span class="token operator">+=</span> <span class="token builtin">string</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>urlFriendly<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "You-are-great"</span></code></pre></div>
+<p>Here's declarative approach for the same:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'You are great'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> urlFriendly <span class="token operator">=</span> <span class="token builtin">string</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/ /g</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>urlFriendly<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Here we are using string.replace along with a regular expression to replace all instances of spaces with hyphens. Using string.replace is a way of describing what’s supposed to happen: spaces in the string should be replaced. The details of how spaces are dealt with are abstracted away inside the replace function. In a declarative program, the syntax itself describes what should happen, and the details of how things happen are abstracted away. Declarative programs are easy to reason about because the code itself describes what is happening.</p>
+<p>Now, let’s consider the task of building a document object model, or <code class="language-text">DOM</code>. An imperative approach would be concerned with how the <code class="language-text">DOM</code> is constructed:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> target <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'target'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> wrapper <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> headline <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wrapper<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">'welcome'</span><span class="token punctuation">;</span>
+headline<span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
+wrapper<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>headline<span class="token punctuation">)</span><span class="token punctuation">;</span>
+target<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>This code is concerned with creating elements, setting elements, and adding them to the document. It would be very hard to make changes, add features, or scale 10,000 lines of code where the DOM is constructed imperatively.
+Now let’s take a look at how we can construct a DOM declaratively using a React component:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token operator">=</span> ReactDOM<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Welcome</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>welcome<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello World</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Welcome</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'target'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>React is declarative. Here, the Welcome component describes the <code class="language-text">DOM</code> that should be rendered. The render function uses the instructions declared in the component to build the <code class="language-text">DOM</code>, abstracting away the details of how the <code class="language-text">DOM</code> is to be rendered. We can clearly see that we want to render our <code class="language-text">Welcome</code> component into the element with the ID of <code class="language-text">target</code>.</p>
+<h2 id="react" style="position:relative;"><a href="#react" aria-label="react permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>React</h2>
+<p>React is a library that’s designed to update the browser DOM for us. We no longer have to be concerned with the complexities associated with building high-performing SPAs because React can do that for us. With React, we do not interact with the DOM API directly. Instead, we provide instructions for what we want React to build, and React will take care of rendering and reconciling the elements we’ve instructed it to create. React elements are the instructions for how the browser DOM should be created.</p>
+<h3 id="react-dom" style="position:relative;"><a href="#react-dom" aria-label="react dom permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>react DOM</h3>
+<p>Once we’ve created a React element, we’ll want to see it in the browser. ReactDOM contains the tools necessary to render React elements in the browser. ReactDOM is where we’ll find the render method.
+We can render a React element, including its children, to the DOM with <code class="language-text">ReactDOM.render</code>. The element we want to render is passed as the first argument, and the second argument is the target node, where we should render the element.</p>
+<p>The <code class="language-text">dish</code> element below has 3 arguments:</p>
+<ul>
+<li>The first argument defines the type of element we want to create. In this case, we want to create an h1 element.</li>
+<li>The second argument represents the element’s properties. This h1 currently has an id of <code class="language-text">id-0</code>.</li>
+<li>The third argument represents the element’s children: any nodes that are inserted between the opening and closing tag (in this case, just some text).</li>
+</ul>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> dish <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token string">'id-0'</span><span class="token punctuation">,</span> <span class="token string">'Baked Salmon'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">[</span>dish<span class="token punctuation">,</span> dessert<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>We build this div inside the body tag:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Baked Salmon</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token string">' '</span><span class="token punctuation">}</span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre></div>
+<p>You can also render multiple elements:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> dish <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Baked Salmon'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dessert <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h2'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Coconut Cream Pie'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">[</span>dish<span class="token punctuation">,</span> dessert<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h2 id="react-rendering" style="position:relative;"><a href="#react-rendering" aria-label="react rendering permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>react rendering</h2>
+<p>Let’s consider an unordered list that contains ingredients:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">2 lb salmon</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">5 sprigs fresh rosemary</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">2 tablespoons olive oil</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">2 small lemons</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">1 teaspoon kosher salt</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text"> </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">4 cloves of chopped garlic</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Here, the unordered list, <code class="language-text">ul</code> is the root element, and it has six children (<code class="language-text">li</code>). We can represent this <code class="language-text">ul</code> and its children with <code class="language-text">React.createElement</code>:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> myElement <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+  <span class="token string">'ul'</span><span class="token punctuation">,</span>
+  <span class="token keyword">null</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 lb salmon'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 small lemons'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>myElement<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>If we were to inspect the resulting React element, we would see each list item represented by a React element and added to an array called props.children. If you console log this element, you'll see this:</p>
+<div class="gatsby-highlight" data-language="txt"><pre class="language-txt"><code class="language-txt">{
+  &quot;type&quot;: &quot;ul&quot;,
+  &quot;props&quot;: {
+  &quot;children&quot;: [
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;2 lb salmon&quot; } ... },
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;5 sprigs fresh rosemary&quot;} ... },
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;2 tablespoons olive oil&quot; } ... },
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;2 small lemons&quot;} ... },
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;1 teaspoon kosher salt&quot;} ... },
+  { &quot;type&quot;: &quot;li&quot;, &quot;props&quot;: { &quot;children&quot;: &quot;4 cloves of chopped garlic&quot;} ... }
+  ]
+}</code></pre></div>
+<p>The major advantage of using React is its ability to separate data from UI elements. Since React is just JavaScript, we can add JavaScript logic to help us build the React component tree. For example, ingredients can be stored in an array, and we can map that array to the React elements.
+Let’s go back and think about the unordered list for a moment:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx">React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+  <span class="token string">'ul'</span><span class="token punctuation">,</span>
+  <span class="token keyword">null</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 lb salmon'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'2 small lemons'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>The data used in list of ingredients above can easily be represented using a JavaScript array:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'2 lb salmon'</span><span class="token punctuation">,</span>
+  <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 small lemons'</span><span class="token punctuation">,</span>
+  <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">,</span>
+  <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
+<p>We want to use this data to generate the correct number of list items without having to hard-code each one. We can map over the array and create list items for as many ingredients as there are:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'2 lb salmon'</span><span class="token punctuation">,</span>
+  <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 small lemons'</span><span class="token punctuation">,</span>
+  <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">,</span>
+  <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> finalList <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+  <span class="token string">'ul'</span><span class="token punctuation">,</span>
+  <span class="token keyword">null</span><span class="token punctuation">,</span>
+  items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>finalList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>This syntax creates a React element for each ingredient in the array. Each string is displayed in the list item’s children as text. The value for each ingredient is displayed as the list item.</p>
+<p>When running this code, you’ll see a console warning like:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx">react<span class="token punctuation">.</span>development<span class="token punctuation">.</span>js<span class="token operator">:</span><span class="token number">207</span> Warning<span class="token operator">:</span> Each child <span class="token keyword">in</span> a list should have a unique <span class="token string">"key"</span> prop<span class="token punctuation">.</span>
+Check the top<span class="token operator">-</span>level render call using <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">. See https://reactjs.org/link/warning-keys for more information.
+at li</span></code></pre></div>
+<p>When we build a list of child elements by iterating through an array, React likes each of those elements to have a key property. The key property is used by React to help it update the DOM efficiently. You can make this warning go away by adding a unique key property to each of the list item elements. You can use the array index for each ingredient as that unique value:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'2 lb salmon'</span><span class="token punctuation">,</span>
+  <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 small lemons'</span><span class="token punctuation">,</span>
+  <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">,</span>
+  <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> finalList <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+  <span class="token string">'ul'</span><span class="token punctuation">,</span>
+  <span class="token keyword">null</span><span class="token punctuation">,</span>
+  items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> i <span class="token punctuation">}</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>finalList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h2 id="jsx" style="position:relative;"><a href="#jsx" aria-label="jsx permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>jsx</h2>
+<p>In the previous section we used <code class="language-text">React.createElement()</code> quite a lot! It is not a recommended approach. The only reason we talked about it was to understand what's going on behind the scenes. Instead, we should be using <code class="language-text">jsx</code> syntax:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello, world!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span></code></pre></div>
+<p>It is called <code class="language-text">JSX</code>, and it is a syntax extension to JavaScript. We use it with React to describe what the UI should look like. It comes with the full power of JavaScript. React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.</p>
+<p>Instead of artificially separating technologies by putting markup and logic in separate files, React separates concerns with loosely coupled units called <a href="#components">components</a> that contain both.</p>
+<p>React doesn’t require using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.</p>
+<p>Converting the previous example to <code class="language-text">JSX</code>, you get this:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'2 lb salmon'</span><span class="token punctuation">,</span>
+  <span class="token string">'5 sprigs fresh rosemary'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 tablespoons olive oil'</span><span class="token punctuation">,</span>
+  <span class="token string">'2 small lemons'</span><span class="token punctuation">,</span>
+  <span class="token string">'1 teaspoon kosher salt'</span><span class="token punctuation">,</span>
+  <span class="token string">'4 cloves of chopped garlic'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">//old</span>
+<span class="token comment">/**const finalList = React.createElement(
+  'ul',
+  null,
+  items.map((item) => React.createElement('li', { key: i }, item))
+);*/</span>
+
+<span class="token keyword">const</span> listItems <span class="token operator">=</span> items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> finalList <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>listItems<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>finalList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>We've created a new <code class="language-text">listItems</code> variable:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> listItems <span class="token operator">=</span> items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>that maps each array item to a <code class="language-text">li</code> tag (with a unique key of-course!);</p>
+<p>Next, we then created our final variable that will be rendered called <code class="language-text">finalList</code> that creates an <code class="language-text">ul</code> out of the <code class="language-text">li</code>:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> finalList <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>listItems<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">;</span></code></pre></div>
+<p>Notice how <code class="language-text">JSX</code> allows us to add HTML to JavaScript!</p>
+<h2 id="components" style="position:relative;"><a href="#components" aria-label="components permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>components</h2>
+<p>No matter its size, its contents, or what technologies are used to create it, a user inter‐ face is made up of parts. Buttons. Lists. Headings. All of these parts, when put together, make up a user interface. In React, we describe each of these parts as a component. Components allow us to reuse the same structure, and then we can populate those structures with different sets of data.</p>
+<p>When considering a user interface you want to build with React, we break down elements into reusable pieces. For example, the recipes in figure below have a title, ingredients list, and instructions. All are part of a larger recipe or app component. We could create a component for each of the highlighted parts: ingredients, instructions, and so on:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2835f98fcb50e16db7b713ad4d108e44/e2e58/recipe.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.810810810810814%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABkElEQVQoz02S627aQBBGef93aRS1TVvaoCRALlwdwOZeTGIbbK/B+ILBKNXJ4LRSf3yanaPZb1YzW8rSlGOSku8z0b7QQdg+DMlEp+w/niQc4pj9ZkP+lxfsH48iSkdJdkGAt3JQ7hrPccgPGdl2S2jbKM8t2Mb3+XPKC5PQsvBdt6h/y48FPwlP5U7psNsRrH0WC4uhMcWUuFoFBJY0MF94fV3TfzaYTRbEUSbNQ9R8gW25GPqEF9MmCCJCtSPyPEp7cd2oGMP0ua5pjE2FSsFdOvhivnBTas0h9daIuRMT7g54kxm2ymjrS/T5Gmebs4nfCJ3VxwvN0Qit3eX+rsZ9tU6n1cEcDLAGOn2tR7fZovXY4LmjYc1/s9INxvqQyXBUaGyMmAoLZTSlowyy067y9fqC75VLbh/L3DyVmfSaTLtP/Kpf0dDuaPXrNPpVZvMey16Hb5ULvvz8RPn2MzcPP3hoVsTQFkPZaKJ8It8TucQSk8AnlmUkZwWqyFOJZ51rY1nGua6Q8j5q5Hz+Ge91JgAdifIgsgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="recipe"
+        title="recipe"
+        src="/static/2835f98fcb50e16db7b713ad4d108e44/fcda8/recipe.png"
+        srcset="/static/2835f98fcb50e16db7b713ad4d108e44/12f09/recipe.png 148w,
+/static/2835f98fcb50e16db7b713ad4d108e44/e4a3f/recipe.png 295w,
+/static/2835f98fcb50e16db7b713ad4d108e44/fcda8/recipe.png 590w,
+/static/2835f98fcb50e16db7b713ad4d108e44/efc66/recipe.png 885w,
+/static/2835f98fcb50e16db7b713ad4d108e44/e2e58/recipe.png 1069w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>This is a scalable solution! If we want to display one recipe or 10,000, our component structure will support this.</p>
+<p>🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑🚧🛑
+Let's create our first component:</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'./App.css'</span><span class="token punctuation">;</span>
 
@@ -1064,8 +1351,23 @@ actionHero<span class="token punctuation">.</span><span class="token function">p
 <li><a href="/React/#spread-operator">spread operator</a></li>
 </ul>
 </li>
-<li><a href="/React/#asynchronous-execution">asynchronous execution</a></li>
-<li><a href="/React/#component">Component</a></li>
+<li>
+<p><a href="/React/#asynchronous-execution">asynchronous execution</a></p>
+<ul>
+<li><a href="/React/#fetch-and-promise">fetch and promise</a></li>
+<li><a href="/React/#async-and-await">async and await</a></li>
+</ul>
+</li>
+<li><a href="/React/#imperative-vs-declarative">imperative vs declarative</a></li>
+<li>
+<p><a href="/React/#react">React</a></p>
+<ul>
+<li><a href="/React/#react-dom">react DOM</a></li>
+</ul>
+</li>
+<li><a href="/React/#react-rendering">react rendering</a></li>
+<li><a href="/React/#jsx">jsx</a></li>
+<li><a href="/React/#components">components</a></li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
 <li><a href="/React/#state">State</a></li>
 <li><a href="/React/#hooks">Hooks</a></li>
