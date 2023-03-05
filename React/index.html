@@ -565,8 +565,9 @@
 <li>
 <p><a href="/React/#prop-validation-and-default-args">prop validation and default args</a></p>
 <ul>
-<li><a href="/React/#propr-validation">propr validation</a></li>
+<li><a href="/React/#prop-validation">prop validation</a></li>
 <li><a href="/React/#default-args">default args</a></li>
+<li><a href="/React/#prop-custom-validation">prop custom validation</a></li>
 </ul>
 </li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
@@ -1439,7 +1440,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
     </span></p>
 <h2 id="prop-validation-and-default-args" style="position:relative;"><a href="#prop-validation-and-default-args" aria-label="prop validation and default args permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prop validation and default args</h2>
 <p>As noted in the <code class="language-text">Menu</code> example, we had quite a few techniques to improve our data handling. We can still improve on checking the <code class="language-text">types</code> of props passed and whether they're valid. Use of <code class="language-text">any</code> is not ideal. We can also provide default arguments if no argument is passed.</p>
-<h3 id="propr-validation" style="position:relative;"><a href="#propr-validation" aria-label="propr validation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>propr validation</h3>
+<h3 id="prop-validation" style="position:relative;"><a href="#prop-validation" aria-label="prop validation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prop validation</h3>
 <p>Let's add type validation for props to our components. Here're the updated props/validations for our components:</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Menu</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> recipes<span class="token punctuation">,</span> title <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> recipes<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> title<span class="token operator">:</span> string <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
 <span class="token keyword">const</span> <span class="token function-variable function">Ingredients</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> ingredients <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> ingredients<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
@@ -1504,6 +1505,32 @@ root<span class="token punctuation">.</span><span class="token function">render<
   numberInstructions <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token operator">...</span></code></pre></div>
 <p><a href="https://github.com/iqbalyarkhan/iqbalyarkhan.github.io/commit/e38c98cd0dfd716122845f324455776137f62310" target="_blank" rel="nofollow noopener noreferrer">Commit</a></p>
+<h3 id="prop-custom-validation" style="position:relative;"><a href="#prop-custom-validation" aria-label="prop custom validation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prop custom validation</h3>
+<p>Often times, you'd want to check some more characteristics of a prop rather than just its type. For example, number of steps should be > 0, number of ingredients should be > 0, title should be >= 4 chars in length. Here's how to do that:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> Summary <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  title <span class="token operator">=</span> <span class="token string">'[RECIPE]'</span><span class="token punctuation">,</span>
+  numberIngredients <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  numberInstructions <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Summary<span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> titleValidator<span class="token punctuation">,</span>
+  numberIngredients<span class="token operator">:</span> numberValidation<span class="token punctuation">,</span>
+  numberInstructions<span class="token operator">:</span> numberValidation<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">titleValidator</span><span class="token punctuation">(</span><span class="token parameter">title<span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> title<span class="token punctuation">.</span>length <span class="token operator">>=</span> <span class="token number">4</span> <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Title must be at least 4 chars long'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">numberValidation</span><span class="token punctuation">(</span><span class="token parameter">ingOrInst<span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> ingOrInst <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Number must be > 0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Summary<span class="token punctuation">;</span></code></pre></div>
+<p><a href="https://github.com/iqbalyarkhan/iqbalyarkhan.github.io/commit/f80479e4ba03fa4099a9b359ab5041a4d82b6f89" target="_blank" rel="nofollow noopener noreferrer">Commit</a></p>
+<p>[Refs page 119]</p>
+<p>Now if any of the checks fail, a <code class="language-text">Warning</code> is thrown.</p>
 <h2 id="event-handlers" style="position:relative;"><a href="#event-handlers" aria-label="event handlers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event Handlers</h2>
 <p>You can respond to events by declaring event handler functions inside your components</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">function</span> <span class="token function">MyButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1819,8 +1846,9 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <li>
 <p><a href="/React/#prop-validation-and-default-args">prop validation and default args</a></p>
 <ul>
-<li><a href="/React/#propr-validation">propr validation</a></li>
+<li><a href="/React/#prop-validation">prop validation</a></li>
 <li><a href="/React/#default-args">default args</a></li>
+<li><a href="/React/#prop-custom-validation">prop custom validation</a></li>
 </ul>
 </li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
