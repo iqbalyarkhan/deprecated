@@ -562,6 +562,13 @@
 <li><a href="/React/#react-rendering">react rendering</a></li>
 <li><a href="/React/#jsx">jsx</a></li>
 <li><a href="/React/#components">components</a></li>
+<li>
+<p><a href="/React/#prop-validation-and-default-args">prop validation and default args</a></p>
+<ul>
+<li><a href="/React/#propr-validation">propr validation</a></li>
+<li><a href="/React/#default-args">default args</a></li>
+</ul>
+</li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
 <li><a href="/React/#state">State</a></li>
 <li><a href="/React/#hooks">Hooks</a></li>
@@ -1051,8 +1058,14 @@ root<span class="token punctuation">.</span><span class="token function">render<
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Olive Oil'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'cup'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Garlic'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'cloves'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    steps<span class="token operator">:</span>
-      <span class="token string">'Preheat the oven to 350 degrees. Spread the olive oil around a glass baking dish. Add the salmon, garlic, and pine nuts to the dish. Bake for 15 minutes. Add the yellow squash and put back in the oven for 30 mins. Remove from oven and let cool for 15 minutes. Add the lettuce and serve.'</span><span class="token punctuation">,</span>
+    steps<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'Preheat the oven to 350 degrees.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Spread the olive oil around a glass baking dish.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Add the salmon, garlic, and pine nuts to the dish.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Bake for 15 minutes.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Add the yellow squash and put back in the oven for 30 mins.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Remove from oven and let cool for 15 minutes. Add the lettuce and serve.'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">'Fish Tacos'</span><span class="token punctuation">,</span>
@@ -1063,8 +1076,11 @@ root<span class="token punctuation">.</span><span class="token function">render<
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Tomatoes'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'large'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Tortillas'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'med'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    steps<span class="token operator">:</span>
-      <span class="token string">'Cook the fish on the grill until hot. Place the fish on the 3 tortillas. Top them with lettuce, tomatoes, and cheese.'</span><span class="token punctuation">,</span>
+    steps<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'Cook the fish on the grill until hot.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Place the fish on the 3 tortillas.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Top them with lettuce, tomatoes, and cheese.'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
 <p>Next, we'll add all our code in <code class="language-text">index.ts</code> which will render our Menu:</p>
@@ -1148,7 +1164,9 @@ root<span class="token punctuation">.</span><span class="token function">render<
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">Steps: </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>steps<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>steps<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">step<span class="token operator">:</span> any<span class="token punctuation">,</span> i<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>step<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
@@ -1166,8 +1184,14 @@ root<span class="token punctuation">.</span><span class="token function">render<
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Olive Oil'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'cup'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Garlic'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'cloves'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    steps<span class="token operator">:</span>
-      <span class="token string">'Preheat the oven to 350 degrees. Spread the olive oil around a glass baking dish. Add the salmon, garlic, and pine nuts to the dish. Bake for 15 minutes. Add the yellow squash and put back in the oven for 30 mins. Remove from oven and let cool for 15 minutes. Add the lettuce and serve.'</span><span class="token punctuation">,</span>
+    steps<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'Preheat the oven to 350 degrees.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Spread the olive oil around a glass baking dish.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Add the salmon, garlic, and pine nuts to the dish.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Bake for 15 minutes.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Add the yellow squash and put back in the oven for 30 mins.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Remove from oven and let cool for 15 minutes. Add the lettuce and serve.'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">'Fish Tacos'</span><span class="token punctuation">,</span>
@@ -1178,8 +1202,11 @@ root<span class="token punctuation">.</span><span class="token function">render<
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Tomatoes'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'large'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Tortillas'</span><span class="token punctuation">,</span> amount<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> measurement<span class="token operator">:</span> <span class="token string">'med'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    steps<span class="token operator">:</span>
-      <span class="token string">'Cook the fish on the grill until hot. Place the fish on the 3 tortillas. Top them with lettuce, tomatoes, and cheese.'</span><span class="token punctuation">,</span>
+    steps<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'Cook the fish on the grill until hot.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Place the fish on the 3 tortillas.'</span><span class="token punctuation">,</span>
+      <span class="token string">'Top them with lettuce, tomatoes, and cheese.'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -1200,7 +1227,9 @@ root<span class="token punctuation">.</span><span class="token function">render<
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">Steps: </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>steps<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>steps<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">step<span class="token operator">:</span> any<span class="token punctuation">,</span> i<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>step<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1255,7 +1284,9 @@ root<span class="token punctuation">.</span><span class="token function">render<
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">Steps: </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>steps<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>steps<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">step<span class="token operator">:</span> any<span class="token punctuation">,</span> i<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>step<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1406,8 +1437,75 @@ root<span class="token punctuation">.</span><span class="token function">render<
       />
   </a>
     </span></p>
+<h2 id="prop-validation-and-default-args" style="position:relative;"><a href="#prop-validation-and-default-args" aria-label="prop validation and default args permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>prop validation and default args</h2>
+<p>As noted in the <code class="language-text">Menu</code> example, we had quite a few techniques to improve our data handling. We can still improve on checking the <code class="language-text">types</code> of props passed and whether they're valid. Use of <code class="language-text">any</code> is not ideal. We can also provide default arguments if no argument is passed.</p>
+<h3 id="propr-validation" style="position:relative;"><a href="#propr-validation" aria-label="propr validation permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>propr validation</h3>
+<p>Let's add type validation for props to our components. Here're the updated props/validations for our components:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Menu</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> recipes<span class="token punctuation">,</span> title <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> recipes<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> title<span class="token operator">:</span> string <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Ingredients</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> ingredients <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> ingredients<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Instructions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> steps <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> steps<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> Recipe <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">,</span>
+  ingredients<span class="token punctuation">,</span>
+  steps<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span></code></pre></div>
+<p>Check out <a href="https://github.com/iqbalyarkhan/iqbalyarkhan.github.io/commit/7c5443506248cda5f6dd217a04e5acefa8660bed" target="_blank" rel="nofollow noopener noreferrer">this</a> commit.</p>
+<h3 id="default-args" style="position:relative;"><a href="#default-args" aria-label="default args permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>default args</h3>
+<p>Now that we have validated our props, lets add default args. To do so, let's assume we're creating a new component called <code class="language-text">Summary</code> that will display the title of the recipe along with counts for both ingredients and steps. Here's the <code class="language-text">Summary</code> component:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Summary</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>
+  title<span class="token punctuation">,</span>
+  numberIngredients<span class="token punctuation">,</span>
+  numberInstructions<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  numberIngredients<span class="token operator">:</span> number<span class="token punctuation">;</span>
+  numberInstructions<span class="token operator">:</span> number<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span>numberIngredients<span class="token punctuation">}</span><span class="token plain-text"> Ingredients &amp; </span><span class="token punctuation">{</span>numberInstructions<span class="token punctuation">}</span><span class="token plain-text"> Instructions
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Summary<span class="token punctuation">;</span></code></pre></div>
+<p>and updated <code class="language-text">Menu</code> component:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">import</span> Recipe <span class="token keyword">from</span> <span class="token string">'./Recipe'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Summary <span class="token keyword">from</span> <span class="token string">'./Summary'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Menu</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> recipes<span class="token punctuation">,</span> title <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> recipes<span class="token operator">:</span> any<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> title<span class="token operator">:</span> string <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>recipes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">recipe<span class="token operator">:</span> any<span class="token punctuation">,</span> i<span class="token operator">:</span> any<span class="token punctuation">,</span> j<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Summary</span></span>
+            <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>j<span class="token punctuation">}</span></span>
+            <span class="token attr-name">title</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>recipe<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span>
+            <span class="token attr-name">numberIngredients</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>recipe<span class="token punctuation">.</span>ingredients<span class="token punctuation">.</span>length<span class="token punctuation">}</span></span>
+            <span class="token attr-name">numberInstructions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>recipe<span class="token punctuation">.</span>steps<span class="token punctuation">.</span>length<span class="token punctuation">}</span></span>
+          <span class="token punctuation">/></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Recipe</span></span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">recipe</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Menu<span class="token punctuation">;</span></code></pre></div>
+<p>Now, if we don't pass in any of the required props, we can use the default value by updating <code class="language-text">Summary</code> props to this:</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> Summary <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  title <span class="token operator">=</span> <span class="token string">"[RECIPE]"</span><span class="token punctuation">,</span>
+  numberIngredients <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  numberInstructions <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token operator">...</span></code></pre></div>
+<p><a href="https://github.com/iqbalyarkhan/iqbalyarkhan.github.io/commit/e38c98cd0dfd716122845f324455776137f62310" target="_blank" rel="nofollow noopener noreferrer">Commit</a></p>
 <h2 id="event-handlers" style="position:relative;"><a href="#event-handlers" aria-label="event handlers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event Handlers</h2>
-<p>You can respond to events by declaring event handler functions inside your components:</p>
+<p>You can respond to events by declaring event handler functions inside your components</p>
 <div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">function</span> <span class="token function">MyButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">function</span> <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'You clicked me!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1718,6 +1816,13 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <li><a href="/React/#react-rendering">react rendering</a></li>
 <li><a href="/React/#jsx">jsx</a></li>
 <li><a href="/React/#components">components</a></li>
+<li>
+<p><a href="/React/#prop-validation-and-default-args">prop validation and default args</a></p>
+<ul>
+<li><a href="/React/#propr-validation">propr validation</a></li>
+<li><a href="/React/#default-args">default args</a></li>
+</ul>
+</li>
 <li><a href="/React/#event-handlers">Event Handlers</a></li>
 <li><a href="/React/#state">State</a></li>
 <li><a href="/React/#hooks">Hooks</a></li>
