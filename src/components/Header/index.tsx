@@ -2,14 +2,13 @@ import * as React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon as Fa } from '@fortawesome/react-fontawesome';
-import { faTags, faSearch, faMoon, faSun, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faTags, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useColorMode } from 'theme-ui';
 
 import './header.scss';
 import { RootState } from '../../state/reducer';
 import { actionCreators } from '../../state/actions';
-import config from '../../../_config';
 
 interface headerPropsType {
   siteTitle: string;
@@ -96,32 +95,6 @@ const Header = (props: headerPropsType) => {
       </div>
 
       <nav id="nav">
-        <div className="theme-toggle">
-          <div className="theme-toggle-description" style={{ display: isMobile ? 'none' : 'flex' }}>
-            <Fa
-              icon={colorMode === 'dark' ? faMoon : faSun}
-              style={{ fontSize: colorMode === 'dark' ? '1.1rem' : '1.2rem' }}
-            />
-            <Fa icon={faChevronRight} style={{ fontSize: '0.9rem' }} />
-          </div>
-
-          <Fa
-            icon={colorMode === 'dark' ? faSun : faMoon}
-            style={{ fontSize: colorMode === 'dark' ? '1.2rem' : '1.1rem' }}
-            onMouseEnter={() => {
-              const toggle: HTMLDivElement | null = document.querySelector('.theme-toggle-description');
-              if (toggle) toggle.style.opacity = '0.5';
-            }}
-            onMouseLeave={() => {
-              const toggle: HTMLDivElement | null = document.querySelector('.theme-toggle-description');
-              if (toggle) toggle.style.opacity = '0';
-            }}
-            onClick={() => {
-              toggleTheme();
-            }}
-          />
-        </div>
-
         <ul>
           <li>
             <div className="tag-wrap">

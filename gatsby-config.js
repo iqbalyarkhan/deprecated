@@ -18,13 +18,6 @@ const gatsbyConfig = {
     `gatsby-plugin-sharp`,
 
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: googleAnalytics,
-      },
-    },
-
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
