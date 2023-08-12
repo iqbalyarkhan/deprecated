@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon as Fa } from '@fortawesome/react-fontawesome';
 import { faTags, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { useColorMode } from 'theme-ui';
 
 import './header.scss';
 import { RootState } from '../../state/reducer';
@@ -16,32 +15,10 @@ interface headerPropsType {
 
 const Header = (props: headerPropsType) => {
   const { siteTitle } = props;
-  const { isMobile, path, size } = useSelector((state: RootState) => state);
+  const { isMobile, path } = useSelector((state: RootState) => state);
   const [, setYPos] = useState(0);
   const [isHide, setIsHide] = useState(false);
   const dispatch = useDispatch();
-  const [colorMode, setColorMode] = useColorMode();
-  const imageSize = React.useMemo(() => size ?? '25px', [size]);
-
-  const toggleTheme = useCallback(() => {
-    const ms = 300;
-    const header: HTMLElement | null = document.getElementById('Header');
-    const transition = 'top 0.3s ease 0.2s, background-color ${ms}ms';
-
-    document.body.style.transition = `background-color ${ms}ms`;
-    if (header) header.style.transition = transition;
-
-    if (colorMode === 'dark') {
-      setColorMode('default');
-    } else {
-      setColorMode('dark');
-    }
-
-    setTimeout(() => {
-      document.body.style.transition = 'none';
-      if (header) header.style.transition = transition;
-    }, ms + 100);
-  }, [colorMode]);
 
   const setPath = useCallback((path: string, size?: string) => dispatch(actionCreators.setPath(path, size)), []);
 
